@@ -4,6 +4,176 @@
   
   
   <entry>
+    <title></title>
+    <link href="/2025/08/02/blog/"/>
+    <url>/2025/08/02/blog/</url>
+    
+    <content type="html"><![CDATA[<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p><a href="https://hexo.io/themes/">官方主题地址</a><br><code>修改主题：_config.yml文件中的theme改为主题名称</code></p><h3 id="GitHub-Pages配置"><a href="#GitHub-Pages配置" class="headerlink" title="GitHub Pages配置"></a>GitHub Pages配置</h3><p>新建repository，保证仓库public，名称填写正确用户名.github.io，系统自动变更为Pages<br>在仓库设置中找到Pages</p><h3 id="Hexo命令"><a href="#Hexo命令" class="headerlink" title="Hexo命令"></a>Hexo命令</h3><p>在<a href="http://localhost:4000/">本地</a>部署博客</p><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">hexo</span> <span class="hljs-selector-tag">clean</span> <span class="hljs-comment">//执行此命令后继续下一条</span><br><span class="hljs-selector-tag">hexo</span> <span class="hljs-selector-tag">g</span> <span class="hljs-comment">//生成博客目录的public</span><br><span class="hljs-selector-tag">hexo</span> <span class="hljs-selector-tag">s</span> <span class="hljs-comment">//本地预览</span><br></code></pre></td></tr></table></figure><p>在服务器上部署博客</p><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">修改theme/_config.yml的<span class="hljs-keyword">deploy</span>部分（注意冒号后面是否留有空格，确保与原格式完全一致）<br>hexo clean <span class="hljs-string">//</span>执行此命令后继续下一条<br>hexo g <span class="hljs-string">//</span>生成博客目录<br>hexo s <span class="hljs-string">//</span>本地预览<br>hexo d <span class="hljs-string">//</span>部署项目<br></code></pre></td></tr></table></figure><p>执行完毕后，所有人就能通过你的用户名+github.io这个域名访问你的网站了</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2025/07/28/ffmpeg/"/>
+    <url>/2025/07/28/ffmpeg/</url>
+    
+    <content type="html"><![CDATA[<h3 id="FFmpeg"><a href="#FFmpeg" class="headerlink" title="FFmpeg"></a>FFmpeg</h3><ol><li><p>安装<br><a href="https://ffmpeg.org/download.html">ffmpeg官网</a><br>下载版本<a href="https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-7.0.2-essentials_build.7z">https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-7.0.2-essentials_build.7z</a><br>解压后会<br>解压后的文件夹中应包含以下目录：<br>bin：FFmpeg 可执行文件所在的文件夹，运行 FFmpeg 的所有命令都需通过此目录下的文件<br>doc：文档资料<br>presets：预设的格式和编码方案<br>进入 bin 目录，可以看到 FFmpeg 的三个核心可执行文件：ffmpeg.exe、ffplay.exe、ffprobe.exe<br>解压后的文件夹中应包含以下目录：<br>bin：FFmpeg 可执行文件所在的文件夹，运行 FFmpeg 的所有命令都需通过此目录下的文件。<br>doc：文档资料。<br>presets：预设的格式和编码方案。<br>进入 bin 目录，可以看到 FFmpeg 的三个核心可执行文件：ffmpeg.exe、ffplay.exe、ffprobe.exe。</p></li><li><p>配置<br>在系统变量“PATH”中添加bin目录路径</p></li><li><p>测试<br>在cmd窗口中输入命令<code>ffmpeg -version</code><br>得到以下输出表示配置成功</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs stylus">ffmpeg version <span class="hljs-number">7.0</span>.<span class="hljs-number">2</span>-essentials_build-www<span class="hljs-selector-class">.gyan</span><span class="hljs-selector-class">.dev</span> Copyright (c) <span class="hljs-number">2000</span>-<span class="hljs-number">2024</span> the FFmpeg developers<br>built with gcc <span class="hljs-number">13.2</span>.<span class="hljs-number">0</span> (Rev5, Built by MSYS2 project)<br>configuration: <span class="hljs-attr">--enable-gpl</span> <span class="hljs-attr">--enable-version3</span> <span class="hljs-attr">--enable-static</span> <span class="hljs-attr">--disable-w32threads</span> <span class="hljs-attr">--disable-autodetect</span> <span class="hljs-attr">--enable-fontconfig</span> <span class="hljs-attr">--enable-iconv</span> <span class="hljs-attr">--enable-gnutls</span> <span class="hljs-attr">--enable-libxml2</span> <span class="hljs-attr">--enable-gmp</span> <span class="hljs-attr">--enable-bzlib</span> <span class="hljs-attr">--enable-lzma</span> <span class="hljs-attr">--enable-zlib</span> <span class="hljs-attr">--enable-libsrt</span> <span class="hljs-attr">--enable-libssh</span> <span class="hljs-attr">--enable-libzmq</span> <span class="hljs-attr">--enable-avisynth</span> <span class="hljs-attr">--enable-sdl2</span> <span class="hljs-attr">--enable-libwebp</span> <span class="hljs-attr">--enable-libx264</span> <span class="hljs-attr">--enable-libx265</span> <span class="hljs-attr">--enable-libxvid</span> <span class="hljs-attr">--enable-libaom</span> <span class="hljs-attr">--enable-libopenjpeg</span> <span class="hljs-attr">--enable-libvpx</span> <span class="hljs-attr">--enable-mediafoundation</span> <span class="hljs-attr">--enable-libass</span> <span class="hljs-attr">--enable-libfreetype</span> <span class="hljs-attr">--enable-libfribidi</span> <span class="hljs-attr">--enable-libharfbuzz</span> <span class="hljs-attr">--enable-libvidstab</span> <span class="hljs-attr">--enable-libvmaf</span> <span class="hljs-attr">--enable-libzimg</span> <span class="hljs-attr">--enable-amf</span> <span class="hljs-attr">--enable-cuda-llvm</span> <span class="hljs-attr">--enable-cuvid</span> <span class="hljs-attr">--enable-dxva2</span> <span class="hljs-attr">--enable-d3d11va</span> <span class="hljs-attr">--enable-d3d12va</span> <span class="hljs-attr">--enable-ffnvcodec</span> <span class="hljs-attr">--enable-libvpl</span> <span class="hljs-attr">--enable-nvdec</span> <span class="hljs-attr">--enable-nvenc</span> <span class="hljs-attr">--enable-vaapi</span> <span class="hljs-attr">--enable-libgme</span> <span class="hljs-attr">--enable-libopenmpt</span> <span class="hljs-attr">--enable-libopencore-amrwb</span> <span class="hljs-attr">--enable-libmp3lame</span> <span class="hljs-attr">--enable-libtheora</span> <span class="hljs-attr">--enable-libvo-amrwbenc</span> <span class="hljs-attr">--enable-libgsm</span> <span class="hljs-attr">--enable-libopencore-amrnb</span> <span class="hljs-attr">--enable-libopus</span> <span class="hljs-attr">--enable-libspeex</span> <span class="hljs-attr">--enable-libvorbis</span> <span class="hljs-attr">--enable-librubberband</span><br>libavutil      <span class="hljs-number">59</span>.  <span class="hljs-number">8.100</span> / <span class="hljs-number">59</span>.  <span class="hljs-number">8.100</span><br>libavcodec     <span class="hljs-number">61</span>.  <span class="hljs-number">3.100</span> / <span class="hljs-number">61</span>.  <span class="hljs-number">3.100</span><br>libavformat    <span class="hljs-number">61</span>.  <span class="hljs-number">1.100</span> / <span class="hljs-number">61</span>.  <span class="hljs-number">1.100</span><br>libavdevice    <span class="hljs-number">61</span>.  <span class="hljs-number">1.100</span> / <span class="hljs-number">61</span>.  <span class="hljs-number">1.100</span><br>libavfilter    <span class="hljs-number">10</span>.  <span class="hljs-number">1.100</span> / <span class="hljs-number">10</span>.  <span class="hljs-number">1.100</span><br>libswscale      <span class="hljs-number">8</span>.  <span class="hljs-number">1.100</span> /  <span class="hljs-number">8</span>.  <span class="hljs-number">1.100</span><br>libswresample   <span class="hljs-number">5</span>.  <span class="hljs-number">1.100</span> /  <span class="hljs-number">5</span>.  <span class="hljs-number">1.100</span><br>libpostproc    <span class="hljs-number">58</span>.  <span class="hljs-number">1.100</span> / <span class="hljs-number">58</span>.  <span class="hljs-number">1.100</span><br></code></pre></td></tr></table></figure></li><li><p>使用<br>FFmpeg 命令行格式<code>ffmpeg [global_options] &#123;[input_file_options] -i input_url&#125; ... &#123;[output_file_options] output_url&#125;</code></p><pre><code class="hljs">     参考链接：https://blog.csdn.net/Natsuago/article/details/143231558</code></pre></li><li><p>音频转换命令</p></li></ol><ul><li><p>ncm转flac<br><code>ffmpeg -i input.ncm -codec:a flac output.flac</code><br>-i input.ncm : 指定输入文件，这里的 input.ncm 是要转换的NCM文件名。<br>-codec:a flac : 使用FLAC编码器进行音频编码。<br>output.flac : 指定输出文件名，将转换后的文件保存为FLAC格式。</p></li><li><p>flac转mp3<br><code>ffmpeg -i input.flac output.mp3</code></p></li></ul><ol start="6"><li>批量转换<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> *.flac; <span class="hljs-keyword">do</span><br>ffmpeg -i <span class="hljs-string">&quot;<span class="hljs-variable">$file</span>&quot;</span> -ab 320k -map_metadata 0 -id3v2_version 3 <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;file%.flac&#125;</span>.mp3&quot;</span>;<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>input.flac 是输入的 FLAC 文件名。<br>output.mp3 是输出的 MP3 文件名。<br>-ab 320k 设置比特率为 320kbps（可根据需求调整）。<br>-map_metadata 0 保留元数据。<br>-id3v2_version 3 确保 MP3 的元数据兼容性。</li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2024.11.13</title>
+    <link href="/2024/11/13/2024-11-13/"/>
+    <url>/2024/11/13/2024-11-13/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Sorry, the password seems wrong, please try again." data-whm="Sorry, this article can't be verified, but you can still see the decrypted content.">  <script id="hbeData" type="hbeData" data-hmacdigest="2dce4023d3b93521efc23b8db4dca99c395c69d2202e2ad11351017b1cdb49c7">d9f6a72de2a8c354dd978015a26e13203e586374f2565c1bf31797a7482decc5</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">You must enter the password to read.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>Diary</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Diary</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2024.10.29</title>
+    <link href="/2024/10/29/2024-10-29/"/>
+    <url>/2024/10/29/2024-10-29/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Sorry, the password seems wrong, please try again." data-whm="Sorry, this article can't be verified, but you can still see the decrypted content.">  <script id="hbeData" type="hbeData" data-hmacdigest="1f30ee4a731c2db565fa3b5502ed77c394f51ced285f539889fcc63165988ead">d9f6a72de2a8c354dd978015a26e1320c02fd184fc77283c5bf2395b3dcfe19484ece218d0e20ed14b5a755ab8e2e8ff11e2336812ce956eeea43019114e7350d39fc01ed916822c9ef9ff219ec7c689ea5a43be535d86e701d5d5a3b4c91b24c2601b90d22e89436c128f07f9f1e4ec18039c1b64fdc92e94a0e0572a893005b5fa0e6584a9bd5dc4e318ed5051fa76bad7830b71c6c3db2b722bda459fe07f80293e380ea8b84fbf117febccdee96576a9c184647d49ef0f94898660da61f9d8f080304904eb873c92aeecdc4dd4fc0c08d758549e3be8b9a63b02d80b824379909bb144d4d54179ad31260e30e3067203768230cf4472db0fadaec37fbeb4c9a156a3529f8792f136a4a1d828a5ee564e8b61d09d8cf13a481dc42740e509968c01a9f582a4e346d6a0f0d215105a152a0b2d02812b32fb1edf875f44ec6b042b0cf13a8506e89645f3c4cbe1b4033054846cab6d7679f223d84880b76b5eed1351d2136a2425bdfbeb9e9f9a80c4eea77e905497347fa7cce896d8bdf3a49b0e926dd0593882e2cbe22150c6495158ecde6c51b4b0e52b57395da355a19b3bfa5a30f6d85bfdaf64349a8e80052c59288cb6596780e87896a590a40cfe19325093e698844cf817d525b40fc3ab5f7b4c1f00a200ef69f3f4783f8be37fd47e5f9a2e958b6a47a98c29f5936e56a93400eabfc35912681c519cd6a873ce97f25d9b80c2197482ce2623acdadf33e6c5911ed70d47e72c24cf22a287aa721e795bc6d3ec18c4f9af0492b19ac72123d3f7ac7b38ee0099c69c0d890e6ec89dd7b27b6a63596aab8a89e3fa682a6857e46c0c4254b5197ebccfb5856060487d58112982849563419e18d14e9dcd9d7b726145737dbc811f0fe70ef7b6055e831b64584c1b7240d80f5e356bb62b373c5c5a054753d591ab207508efee331524798c7ca8b6d5c1c6ad993569ad5e715bc5e18c99d993fbbbe6f5a5f1aed9806e9c76d5c0d8c51a0a8679e649a4b56d8878ec2bce01dac68ca39e686b2fd2a4369698d3b10dfb1ad3d045a52c3a51b1a6ab6549bb1e30ecd007611068070cc136068a8d3eabd2842e548ce17c24424ac548a5a213505598cc6b4e0131f2a0e9d4ca879b3bfdc41dfff37b400628cf46e4cf8d6e229f0b675018d91654132cb266b6be1a843066678b954a96b8085c4dc72ce52c9690117e6d432b6e157f399773d0c43e7671cd9fc1149ac7a19663e98859811ea4fcffb1d67c04fac1daa04e3485aafc331d218c9a8865f25f72e6c642ff7323cce7ecd79ce15d94e83548a1a029cf36093c83212007094875fd92ea4e0162a0f1a87734f35a17ef2281d0e50c37704698c2156bb2ce6df9ea44232b241a2e02904d518f124e18942a6ea482c50892242b17961dbc3969e08a823dcd8e</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">You must enter the password to read.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>Diary</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Diary</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2024.10.20</title>
+    <link href="/2024/10/20/2024-10-20/"/>
+    <url>/2024/10/20/2024-10-20/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Sorry, the password seems wrong, please try again." data-whm="Sorry, this article can't be verified, but you can still see the decrypted content.">  <script id="hbeData" type="hbeData" data-hmacdigest="322b8ab78564653dceb2cc7c971a5502c784b6bed327a424d7a40beaf03d2ad3">d9f6a72de2a8c354dd978015a26e1320c02fd184fc77283c5bf2395b3dcfe194f1a1131ced3554653110202679fe80bd0dfcab98b0f5423945572a68b36d322f1467437c003b2c153775715e25dc1c134416f835b8b8c94ca3f977a4fe01ac0de135bf052808bd7d73d41162aed51406d26cbe8ac9724c883e54af155a0cfc5e9ba994435416f540d7e4c676ddd3d306</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">You must enter the password to read.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>Diary</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Diary</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2024.10.19</title>
+    <link href="/2024/10/19/2024-10-19/"/>
+    <url>/2024/10/19/2024-10-19/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Sorry, the password seems wrong, please try again." data-whm="Sorry, this article can't be verified, but you can still see the decrypted content.">  <script id="hbeData" type="hbeData" data-hmacdigest="c07ca292230acc991b62962c88e4fbb1c3a630f9630eda38ca58864afdbdffbe">d9f6a72de2a8c354dd978015a26e1320c02fd184fc77283c5bf2395b3dcfe194f1a1131ced3554653110202679fe80bd0dfcab98b0f5423945572a68b36d322f1467437c003b2c153775715e25dc1c134416f835b8b8c94ca3f977a4fe01ac0de135bf052808bd7d73d41162aed514062f88b2f91ceb9241c893711d527f68b6e5a60b22c0b095a848169436f664039830c853c7c71fb8e8b54dbcb2ecfa0e5a4e7dc1747a60f36b6206eb19ac47f9490b9b63f7057d4b12baf6446b0a77ab17eb547caaba4e2656c59609b5b0a2fa8807490c3e3c2c1a97ad124af939801546d8c6424314d9e094e450231891ee4d99</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">You must enter the password to read.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Diary</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2024.10.18</title>
+    <link href="/2024/10/18/2024-10-18/"/>
+    <url>/2024/10/18/2024-10-18/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Sorry, the password seems wrong, please try again." data-whm="Sorry, this article can't be verified, but you can still see the decrypted content.">  <script id="hbeData" type="hbeData" data-hmacdigest="86a0996bffde43947056a0000c04401786126fd2212523f5d8087d493390b82e">d9f6a72de2a8c354dd978015a26e1320c02fd184fc77283c5bf2395b3dcfe194f1a1131ced3554653110202679fe80bd0dfcab98b0f5423945572a68b36d322f1467437c003b2c153775715e25dc1c134416f835b8b8c94ca3f977a4fe01ac0de135bf052808bd7d73d41162aed514061d6fe88372f88d6945e5ffc2c5012c44a74c64b148a6ec35a1006381fc5fec6341db10529d56121bb7c3aed18f9f9e2b2b6113a6c63244acfb8215b205644571</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">You must enter the password to read.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>Diary</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Diary</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2024.10.17</title>
+    <link href="/2024/10/17/2024-10-17/"/>
+    <url>/2024/10/17/2024-10-17/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Sorry, the password seems wrong, please try again." data-whm="Sorry, this article can't be verified, but you can still see the decrypted content.">  <script id="hbeData" type="hbeData" data-hmacdigest="3655755929425f2e7f2f71950eaa7baaecf20c7f9d7e5d836b42c73b7701652b">d9f6a72de2a8c354dd978015a26e1320c91b312933ccc697156d2467e5707ce708e590a92e2db4df90342023f6bebcda8d00ddd139a97f72987b7336fceddbf2da11db9f71b37842fb89f22582f7ee006485179fd35144d01904cbcaa2a9a01e71e70d8b525c884c5ab4feb27a4de4171a02f455a3864226ecac7756d9b7c733951d1bf651308eae210a8a2afb871ca00e8d34712bfa8063aebd4b3cb66cab1bff3a9f59936bf27e8155567cb5bba9c9255e83a722cb1bd247916507fbd1a46197e9297d2e98614057ebf0a74aad72a3152b922748050f8d64fa7eeb9313ae9c</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">You must enter the password to read.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>Diary</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Diary</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>2024.10.16</title>
     <link href="/2024/10/16/2024-10-16/"/>
     <url>/2024/10/16/2024-10-16/</url>
